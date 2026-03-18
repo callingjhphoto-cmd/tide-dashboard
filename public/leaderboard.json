@@ -1,0 +1,16 @@
+[
+  {
+    "analyst": "Bloomberg Panel",
+    "total_calls": 6,
+    "correct_calls": 0,
+    "scored_calls": 6,
+    "accuracy_pct": 0.0
+  },
+  {
+    "analyst": "Maggie Lake",
+    "total_calls": 10,
+    "correct_calls": 0,
+    "scored_calls": 10,
+    "accuracy_pct": 0.0
+  }
+]

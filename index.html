@@ -608,9 +608,10 @@
     <span aria-label="Live data feed active"><span class="live-dot" role="status" aria-label="Connected"></span> LIVE</span>
     <span class="tps-counter" id="tpsCounter" aria-label="Ticks per second">0 ticks/s</span>
     <span id="clock" aria-label="Current time"></span>
-    <span>165 TRANSCRIPTS</span>
-    <span>10 CHANNELS</span>
-    <span>25 TRACKED CALLS</span>
+    <span id="stat-transcripts">165 TRANSCRIPTS</span>
+    <span id="stat-channels">10 CHANNELS</span>
+    <span id="stat-calls">25 TRACKED CALLS</span>
+    <span id="data-updated" style="color:var(--white-dark);font-size:10px"></span>
   </div>
 </header>
 
@@ -797,7 +798,7 @@
     </div>
     <table class="analyst-table" aria-label="Analyst performance rankings">
       <thead><tr><th scope="col">#</th><th scope="col">ANALYST</th><th scope="col">CHANNEL</th><th scope="col">ACCURACY</th><th scope="col">BIAS</th><th scope="col">KEY CALL</th></tr></thead>
-      <tbody>
+      <tbody id="leaderboard-body">
         <tr><td><span class="rank-badge rank-1" aria-label="Rank 1">1</span></td><td>Darius Dale</td><td>42 Macro</td><td>87%<div class="accuracy-bar-container" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="accuracy-bar" style="width:87%;background:var(--green)"></div></div></td><td><span class="tag tag-bullish">Bullish</span></td><td style="font-size:10px;color:var(--white-dim)">Risk-on regime: bullish stocks, gold, BTC, commodities. Bearish bonds &amp; dollar.</td></tr>
         <tr><td><span class="rank-badge rank-2" aria-label="Rank 2">2</span></td><td>Raoul Pal</td><td>Real Vision</td><td>82%<div class="accuracy-bar-container" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="accuracy-bar" style="width:82%;background:var(--green)"></div></div></td><td><span class="tag tag-bullish">Bullish</span></td><td style="font-size:10px;color:var(--white-dim)">Long-term BTC accumulation zone. TradFi distribution channels = structural tailwind.</td></tr>
         <tr><td><span class="rank-badge rank-3" aria-label="Rank 3">3</span></td><td>Chamath P.</td><td>All-In Pod</td><td>78%<div class="accuracy-bar-container" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="accuracy-bar" style="width:78%;background:var(--amber)"></div></div></td><td><span class="tag tag-bullish">Bullish</span></td><td style="font-size:10px;color:var(--white-dim)">Quick Iran off-ramp via Trump-Xi summit. Mega-bullish AI revenue growth.</td></tr>
@@ -815,7 +816,7 @@
       <span class="panel-title">CHANNEL MONITOR</span>
       <span class="panel-badge">10 ACTIVE</span>
     </div>
-    <div class="channel-grid" role="list" aria-label="Monitored channels">
+    <div class="channel-grid" id="channel-grid" role="list" aria-label="Monitored channels">
       <div class="channel-card" role="listitem"><span class="channel-name">Bloomberg TV</span><div class="channel-stats"><span class="channel-count">52</span><div class="channel-status status-active" role="status" aria-label="Active"></div></div></div>
       <div class="channel-card" role="listitem"><span class="channel-name">All-In Podcast</span><div class="channel-stats"><span class="channel-count">28</span><div class="channel-status status-active" role="status" aria-label="Active"></div></div></div>
       <div class="channel-card" role="listitem"><span class="channel-name">Real Vision</span><div class="channel-stats"><span class="channel-count">24</span><div class="channel-status status-active" role="status" aria-label="Active"></div></div></div>
@@ -835,7 +836,7 @@
       <span class="panel-title">LATEST TRANSCRIPTS</span>
       <span class="panel-badge">LAST 48 HOURS</span>
     </div>
-    <div class="transcript-list" role="list" aria-label="Recent transcript entries">
+    <div class="transcript-list" id="transcript-list" role="list" aria-label="Recent transcript entries">
       <div class="transcript-item" role="listitem"><span class="transcript-date">Mar 15</span><div><div class="transcript-channel">Bloomberg Television</div><div class="transcript-title">New Strikes In Iran As War Enters Day 16</div><div class="transcript-meta">Duration: 12m | High conviction</div></div></div>
       <div class="transcript-item" role="listitem"><span class="transcript-date">Mar 15</span><div><div class="transcript-channel">Bloomberg Television</div><div class="transcript-title">Trump Not Ready for Iran Deal, Iran's Uncertain Future</div><div class="transcript-meta">Duration: 8m | High conviction</div></div></div>
       <div class="transcript-item" role="listitem"><span class="transcript-date">Mar 15</span><div><div class="transcript-channel">Raoul Pal / Journey Man</div><div class="transcript-title">AI Agents Are Now Controlling Real Devices | Martin DeVido</div><div class="transcript-meta">Duration: 45m | High conviction</div></div></div>
@@ -850,11 +851,12 @@
   </section>
 
   <!-- KEY MARKET CALLS -->
-  <section class="panel panel-tall" aria-label="Key market calls">
+  <section class="panel panel-tall" aria-label="Key market calls" id="calls-section">
     <div class="panel-header">
       <span class="panel-title">KEY MARKET CALLS</span>
-      <span class="panel-badge">ACTIVE</span>
+      <span class="panel-badge" id="calls-badge">ACTIVE</span>
     </div>
+    <div id="calls-container">
     <div class="call-card"><div class="call-header"><span class="call-asset">STOCKS / GOLD / BTC / COMMODITIES</span><span class="call-direction long">LONG</span></div><div class="call-quote">"Based on the current constellation of composite signals which is bullish for stocks, gold, Bitcoin and commodities... there is a high probability of sustaining a risk-on market regime. Just relax."</div><div class="call-source">Darius Dale / 42 Macro - Mar 13</div></div>
     <div class="call-card"><div class="call-header"><span class="call-asset">GLOBAL BONDS / DOLLAR</span><span class="call-direction short">SHORT</span></div><div class="call-quote">"Markets were very ill-positioned for an inflation shock... crowded bond longs face a systematic unwind. Bearish for bonds and dollar."</div><div class="call-source">Darius Dale / 42 Macro - Mar 13</div></div>
     <div class="call-card"><div class="call-header"><span class="call-asset">BITCOIN</span><span class="call-direction long">LONG</span></div><div class="call-quote">"Crypto front-ran the crash. The direction is one way only. TradFi distribution channels dwarf all of digital assets today."</div><div class="call-source">Real Vision / Raoul Pal - Mar 14-15</div></div>
@@ -863,6 +865,7 @@
     <div class="call-card"><div class="call-header"><span class="call-asset">GOLD</span><span class="call-direction long">LONG</span></div><div class="call-quote">"Central banks haven't stopped buying. $3,000 is a matter of when, not if."</div><div class="call-source">Bloomberg - Mar 15</div></div>
     <div class="call-card"><div class="call-header"><span class="call-asset">BROWN FORMAN (BF.B)</span><span class="call-direction long">LONG</span></div><div class="call-quote">"That chart looks like absolute death. And the reason I like it &mdash; it's countercyclical. You just need things to stop getting worse for alcohol."</div><div class="call-source">Jared Dillian / Macro Dirt - Mar 15</div></div>
     <div class="call-card"><div class="call-header"><span class="call-asset">S&amp;P 500</span><span class="call-direction short">SHORT</span></div><div class="call-quote">"S&amp;P 500 downside target 6,100. Financials showing financial crisis technical setups. Short DXY at 104-105 to rotate back to risk."</div><div class="call-source">Dale Pinkert / Talking Markets - Mar 13</div></div>
+    </div>
   </section>
 
   <!-- MACRO THESIS -->
@@ -2092,6 +2095,87 @@ function toggleReport(idx) {
 
 buildFilters();
 renderReports();
+
+// ========== LIVE DATA FEED FROM dashboard_data.json ==========
+
+async function loadDashboardData() {
+  try {
+    const resp = await fetch('public/dashboard_data.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+
+    // Update header stats
+    const stTranscripts = document.getElementById('stat-transcripts');
+    const stChannels = document.getElementById('stat-channels');
+    const stCalls = document.getElementById('stat-calls');
+    const stUpdated = document.getElementById('data-updated');
+    if (stTranscripts && data.total_transcripts) stTranscripts.textContent = data.total_transcripts + ' TRANSCRIPTS';
+    if (stChannels && data.channel_status) stChannels.textContent = Object.keys(data.channel_status).length + ' CHANNELS';
+    if (stCalls && data.total_calls) stCalls.textContent = data.total_calls + ' TRACKED CALLS';
+    if (stUpdated && data.updated_at) {
+      const d = new Date(data.updated_at);
+      stUpdated.textContent = 'DATA: ' + d.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'});
+    }
+
+    // Update leaderboard table
+    const lbBody = document.getElementById('leaderboard-body');
+    if (lbBody && data.leaderboard && data.leaderboard.length > 0) {
+      lbBody.innerHTML = data.leaderboard.map(function(a, i) {
+        var rankClass = i < 3 ? 'rank-' + (i+1) : 'rank-default';
+        var pct = a.accuracy_pct != null ? Math.round(a.accuracy_pct) : 0;
+        var barColor = pct >= 75 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : 'var(--orange)';
+        var bias = a.bias || '--';
+        var biasClass = bias.toLowerCase() === 'bullish' ? 'tag-bullish' : bias.toLowerCase() === 'bearish' ? 'tag-bearish' : '';
+        var keyCall = a.key_call || (a.total_calls + ' calls tracked');
+        return '<tr><td><span class="rank-badge ' + rankClass + '" aria-label="Rank ' + (i+1) + '">' + (i+1) + '</span></td>' +
+          '<td>' + escHtml(a.analyst) + '</td>' +
+          '<td>' + escHtml(a.channel || '--') + '</td>' +
+          '<td>' + pct + '%<div class="accuracy-bar-container"><div class="accuracy-bar" style="width:' + pct + '%;background:' + barColor + '"></div></div></td>' +
+          '<td>' + (biasClass ? '<span class="tag ' + biasClass + '">' + escHtml(bias) + '</span>' : escHtml(bias)) + '</td>' +
+          '<td style="font-size:10px;color:var(--white-dim)">' + escHtml(keyCall) + '</td></tr>';
+      }).join('');
+    }
+
+    // Update channel monitor
+    var chGrid = document.getElementById('channel-grid');
+    if (chGrid && data.channel_status) {
+      chGrid.innerHTML = Object.entries(data.channel_status).map(function(entry) {
+        var name = entry[0].replace(/_/g, ' ');
+        var count = entry[1];
+        var statusClass = count > 5 ? 'status-active' : count > 0 ? 'status-stale' : 'status-inactive';
+        return '<div class="channel-card" role="listitem"><span class="channel-name">' + escHtml(name) + '</span>' +
+          '<div class="channel-stats"><span class="channel-count">' + count + '</span>' +
+          '<div class="channel-status ' + statusClass + '" role="status"></div></div></div>';
+      }).join('');
+    }
+
+    // Update key market calls
+    var callsContainer = document.getElementById('calls-container');
+    var callsBadge = document.getElementById('calls-badge');
+    if (callsContainer && data.top_calls && data.top_calls.length > 0) {
+      if (callsBadge) callsBadge.textContent = data.top_calls.length + ' ACTIVE';
+      callsContainer.innerHTML = data.top_calls.map(function(c) {
+        var dir = (c.direction || '').toUpperCase();
+        var dirClass = dir === 'UP' ? 'long' : 'short';
+        var dirLabel = dir === 'UP' ? 'LONG' : dir === 'DOWN' ? 'SHORT' : dir;
+        var score = c.score || 'PENDING';
+        var scoreColor = score === 'CORRECT' ? 'var(--green)' : score === 'INCORRECT' ? 'var(--red)' : 'var(--amber)';
+        return '<div class="call-card"><div class="call-header"><span class="call-asset">' + escHtml((c.asset || '').toUpperCase()) + '</span>' +
+          '<span class="call-direction ' + dirClass + '">' + dirLabel + '</span></div>' +
+          '<div class="call-quote" style="font-size:10px;color:var(--white-dim)">' + escHtml(c.analyst + ' \u2014 ' + c.date) +
+          ' | Score: <span style="color:' + scoreColor + '">' + escHtml(score) + '</span></div></div>';
+      }).join('');
+    }
+
+    console.log('[TIDE] Dashboard data loaded:', data.total_calls, 'calls,', data.total_transcripts, 'transcripts');
+  } catch (err) {
+    console.warn('[TIDE] Could not load dashboard_data.json:', err.message);
+  }
+}
+
+// Load on startup, refresh every 5 minutes
+loadDashboardData();
+setInterval(loadDashboardData, 300000);
 </script>
 </body>
 </html>

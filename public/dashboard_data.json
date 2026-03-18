@@ -1,0 +1,98 @@
+{
+  "updated_at": "2026-03-18T17:52:21.535330",
+  "consensus_thesis": "Rate cut expectations remain elevated despite inflation stickiness. Oil markets volatile on geopolitical tensions. Dollar direction uncertain with mixed analyst signals.",
+  "top_calls": [
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "DOWN",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "UP",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "DOWN",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "UP",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "DOWN",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Bloomberg Panel",
+      "date": "2026-03-15",
+      "asset": "rates",
+      "direction": "UP",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Maggie Lake",
+      "date": "2026-03-13",
+      "asset": "rates",
+      "direction": "UP",
+      "score": "PENDING"
+    },
+    {
+      "analyst": "Maggie Lake",
+      "date": "2026-03-13",
+      "asset": "dollar",
+      "direction": "DOWN",
+      "score": "UNSCORED"
+    },
+    {
+      "analyst": "Maggie Lake",
+      "date": "2026-03-13",
+      "asset": "dollar",
+      "direction": "UP",
+      "score": "UNSCORED"
+    },
+    {
+      "analyst": "Maggie Lake",
+      "date": "2026-03-13",
+      "asset": "crude",
+      "direction": "UP",
+      "score": "PENDING"
+    }
+  ],
+  "leaderboard": [
+    {
+      "analyst": "Bloomberg Panel",
+      "total_calls": 6,
+      "correct_calls": 0,
+      "scored_calls": 6,
+      "accuracy_pct": 0.0
+    },
+    {
+      "analyst": "Maggie Lake",
+      "total_calls": 10,
+      "correct_calls": 0,
+      "scored_calls": 10,
+      "accuracy_pct": 0.0
+    }
+  ],
+  "channel_status": {
+    "Bloomberg_Television": 6,
+    "Maggie_Lake_Talking_Markets": 10
+  },
+  "total_transcripts": 200,
+  "total_calls": 16
+}
