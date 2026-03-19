@@ -295,6 +295,8 @@ body {
     <div class="idx"><span class="lbl">DXY</span> <span class="val" id="tb-dxy">103.82</span> <span class="chg down" id="tb-dxy-chg">-0.18%</span></div>
     <div class="idx"><span class="lbl">BTC</span> <span class="val" id="tb-btc">--</span> <span class="chg" id="tb-btc-chg">--</span></div>
     <div class="idx"><span class="lbl">GOLD</span> <span class="val" id="tb-gold">3,021.4</span> <span class="chg up" id="tb-gold-chg">+0.67%</span></div>
+    <div class="idx"><span class="lbl">VIX</span> <span class="val" id="tb-vix">16.8</span></div>
+    <div class="idx"><span class="lbl">10Y</span> <span class="val" id="tb-tnx">4.31%</span></div>
   </div>
 </div>
 
@@ -387,7 +389,8 @@ function updateClock() {
   const utc = now.toUTCString().slice(17, 25);
   const ny = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
   const ldn = now.toLocaleString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  document.getElementById('clock').textContent = 'UTC ' + utc + ' | NY ' + ny + ' | LDN ' + ldn;
+  var dateStr = now.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase();
+  document.getElementById('clock').textContent = dateStr + ' | UTC ' + utc + ' | NY ' + ny + ' | LDN ' + ldn;
 
   // US market hours: 9:30-16:00 ET, Mon-Fri
   const nyNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
@@ -471,10 +474,7 @@ function connectBinance() {
 
     asset.price = newPrice;
     asset.chg24h = pctChange;
-    // Approximate 7d (not available from ticker)
-    if (asset.chg7d === 0) {
-      asset.chg7d = pctChange * 2.5 + (Math.random() - 0.5) * 2;
-    }
+    // 7d change is fetched separately via klines
 
     // Update price card
     var priceEl = document.getElementById('price-' + asset.id);
@@ -635,6 +635,38 @@ function renderTranscripts() {
   }).join('');
 }
 renderTranscripts();
+
+// ===== REAL 7-DAY CHANGE (Binance Klines) =====
+function fetch7dChanges() {
+  var cryptoPairs = [
+    { symbol: 'BTCUSDT', id: 'btc' },
+    { symbol: 'ETHUSDT', id: 'eth' },
+    { symbol: 'SOLUSDT', id: 'sol' },
+  ];
+
+  cryptoPairs.forEach(function(pair) {
+    fetch('https://api.binance.com/api/v3/klines?symbol=' + pair.symbol + '&interval=1d&limit=8')
+      .then(function(r) { return r.json(); })
+      .then(function(klines) {
+        if (klines.length >= 7) {
+          var priceNow = parseFloat(klines[klines.length - 1][4]); // close of latest candle
+          var price7d = parseFloat(klines[0][1]); // open of 7 days ago
+          var chg7d = ((priceNow - price7d) / price7d * 100);
+          var asset = assets.find(function(a) { return a.id === pair.id; });
+          if (asset) {
+            asset.chg7d = chg7d;
+            var el = document.getElementById('chg7d-' + pair.id);
+            if (el) { el.textContent = fmtChg(chg7d); el.className = chgClass(chg7d); }
+          }
+        }
+      })
+      .catch(function(e) { console.warn('7d klines fail ' + pair.id, e); });
+  });
+}
+
+// Fetch real 7d data on load and every 10 minutes
+fetch7dChanges();
+setInterval(fetch7dChanges, 600000);
 
 </script>
 </body>
