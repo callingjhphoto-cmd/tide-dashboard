@@ -1,98 +1,1636 @@
 {
-  "updated_at": "2026-03-18T17:52:21.535330",
-  "consensus_thesis": "Rate cut expectations remain elevated despite inflation stickiness. Oil markets volatile on geopolitical tensions. Dollar direction uncertain with mixed analyst signals.",
+  "updated_at": "2026-03-19T02:52:24.389315",
+  "consensus_thesis": "Insufficient scored calls to generate consensus thesis.",
+  "total_calls": 494,
+  "scored_calls": 0,
+  "unscored_calls": 494,
   "top_calls": [
     {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
+      "analyst": "Travis Kling",
+      "date": "2026-03-18",
+      "asset": "bitcoin",
+      "ticker": "BTC-USD",
+      "direction": "UP",
+      "target_price": 70000.0,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "crypto",
+      "title": "Debating The Impact Of A Bitcoin Strategic Reserve | Travis Kling"
+    },
+    {
+      "analyst": "Travis Kling",
+      "date": "2026-03-18",
       "asset": "rates",
+      "ticker": "^TNX",
       "direction": "DOWN",
-      "score": "PENDING"
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "Debating The Impact Of A Bitcoin Strategic Reserve | Travis Kling"
     },
     {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
-      "asset": "rates",
-      "direction": "UP",
-      "score": "PENDING"
-    },
-    {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
-      "asset": "rates",
+      "analyst": "Travis Kling",
+      "date": "2026-03-18",
+      "asset": "bitcoin",
+      "ticker": "BTC-USD",
       "direction": "DOWN",
-      "score": "PENDING"
+      "target_price": 70000.0,
+      "timeframe": "this year",
+      "confidence": "high",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "crypto",
+      "title": "Debating The Impact Of A Bitcoin Strategic Reserve | Travis Kling"
     },
     {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
-      "asset": "rates",
+      "analyst": "Michael Howell",
+      "date": "2026-03-18",
+      "asset": "inflation",
+      "ticker": "^TNX",
       "direction": "UP",
-      "score": "PENDING"
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "Liquidity Is Breaking And The Economy Is Next | Michael Howell"
     },
     {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
+      "analyst": "Michael Howell",
+      "date": "2026-03-18",
+      "asset": "gold",
+      "ticker": "GC=F",
+      "direction": "UP",
+      "target_price": null,
+      "timeframe": "long-term",
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "commodities",
+      "title": "Liquidity Is Breaking And The Economy Is Next | Michael Howell"
+    },
+    {
+      "analyst": "Raoul Pal",
+      "date": "2026-03-18",
       "asset": "rates",
+      "ticker": "^TNX",
       "direction": "DOWN",
-      "score": "PENDING"
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Everything Code: Debt, Demographics, And The Infinite Human Future | Raoul Pal"
     },
     {
-      "analyst": "Bloomberg Panel",
-      "date": "2026-03-15",
+      "analyst": "Raoul Pal",
+      "date": "2026-03-18",
       "asset": "rates",
+      "ticker": "^TNX",
       "direction": "UP",
-      "score": "PENDING"
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Everything Code: Debt, Demographics, And The Infinite Human Future | Raoul Pal"
     },
     {
-      "analyst": "Maggie Lake",
-      "date": "2026-03-13",
+      "analyst": "Raoul Pal",
+      "date": "2026-03-18",
+      "asset": "oil",
+      "ticker": "CL=F",
+      "direction": "DOWN",
+      "target_price": null,
+      "timeframe": "10 years",
+      "confidence": "high",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "commodities",
+      "title": "The Everything Code: Debt, Demographics, And The Infinite Human Future | Raoul Pal"
+    },
+    {
+      "analyst": "Lyn Alden",
+      "date": "2026-03-18",
+      "asset": "fed funds",
+      "ticker": "^TNX",
+      "direction": "UP",
+      "target_price": 0.0,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Fed\u2019s Tools Aren\u2019t Made For Fiscal Dominance | Lyn Alden"
+    },
+    {
+      "analyst": "Lyn Alden",
+      "date": "2026-03-18",
       "asset": "rates",
+      "ticker": "^TNX",
       "direction": "UP",
-      "score": "PENDING"
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Fed\u2019s Tools Aren\u2019t Made For Fiscal Dominance | Lyn Alden"
     },
     {
-      "analyst": "Maggie Lake",
-      "date": "2026-03-13",
+      "analyst": "Lyn Alden",
+      "date": "2026-03-18",
+      "asset": "fed funds",
+      "ticker": "^TNX",
+      "direction": "DOWN",
+      "target_price": 0.0,
+      "timeframe": "this year",
+      "confidence": "high",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Fed\u2019s Tools Aren\u2019t Made For Fiscal Dominance | Lyn Alden"
+    },
+    {
+      "analyst": "Lyn Alden",
+      "date": "2026-03-18",
       "asset": "dollar",
+      "ticker": "DX=F",
       "direction": "DOWN",
-      "score": "UNSCORED"
+      "target_price": null,
+      "timeframe": "this year",
+      "confidence": "high",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "The Fed\u2019s Tools Aren\u2019t Made For Fiscal Dominance | Lyn Alden"
     },
     {
-      "analyst": "Maggie Lake",
-      "date": "2026-03-13",
-      "asset": "dollar",
-      "direction": "UP",
-      "score": "UNSCORED"
+      "analyst": "Darius Dale",
+      "date": "2026-03-18",
+      "asset": "rates",
+      "ticker": "^TNX",
+      "direction": "DOWN",
+      "target_price": null,
+      "timeframe": "this year",
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "Trump Is \u201cKitchen Sinking\u201d The US Economy | Darius Dale"
     },
     {
-      "analyst": "Maggie Lake",
-      "date": "2026-03-13",
-      "asset": "crude",
+      "analyst": "Darius Dale",
+      "date": "2026-03-18",
+      "asset": "equities",
+      "ticker": "^GSPC",
       "direction": "UP",
-      "score": "PENDING"
+      "target_price": 0.0,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "equities",
+      "title": "Trump Is \u201cKitchen Sinking\u201d The US Economy | Darius Dale"
+    },
+    {
+      "analyst": "Darius Dale",
+      "date": "2026-03-18",
+      "asset": "interest rates",
+      "ticker": "^TNX",
+      "direction": "DOWN",
+      "target_price": null,
+      "timeframe": null,
+      "confidence": "medium",
+      "score": null,
+      "score_detail": null,
+      "right_for_right_reasons": null,
+      "asset_class": "rates",
+      "title": "Trump Is \u201cKitchen Sinking\u201d The US Economy | Darius Dale"
     }
   ],
   "leaderboard": [
     {
-      "analyst": "Bloomberg Panel",
-      "total_calls": 6,
+      "analyst": "Jim Bianco",
+      "total_calls": 19,
+      "scored_calls": 0,
       "correct_calls": 0,
-      "scored_calls": 6,
-      "accuracy_pct": 0.0
+      "pending_calls": 19,
+      "high_confidence_calls": 3,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 14,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "crypto": {
+          "total": 3,
+          "correct": 0
+        }
+      }
     },
     {
-      "analyst": "Maggie Lake",
-      "total_calls": 10,
+      "analyst": "Cem Karsan",
+      "total_calls": 12,
+      "scored_calls": 0,
       "correct_calls": 0,
-      "scored_calls": 10,
-      "accuracy_pct": 0.0
+      "pending_calls": 12,
+      "high_confidence_calls": 7,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 8,
+          "correct": 0
+        },
+        "equities": {
+          "total": 4,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Lyn Alden",
+      "total_calls": 6,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 6,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 5,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Raoul Pal",
+      "total_calls": 6,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 6,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "crypto": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Darius Dale",
+      "total_calls": 5,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 5,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        },
+        "equities": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Luke Gromen",
+      "total_calls": 4,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 4,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Travis Kling",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "crypto": {
+          "total": 2,
+          "correct": 0
+        },
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Michael Howell",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": true,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Forward Guidance",
+      "total_calls": 194,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 194,
+      "high_confidence_calls": 22,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 145,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 18,
+          "correct": 0
+        },
+        "equities": {
+          "total": 23,
+          "correct": 0
+        },
+        "crypto": {
+          "total": 8,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Real Vision",
+      "total_calls": 64,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 64,
+      "high_confidence_calls": 16,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 3,
+          "correct": 0
+        },
+        "rates": {
+          "total": 47,
+          "correct": 0
+        },
+        "equities": {
+          "total": 3,
+          "correct": 0
+        },
+        "crypto": {
+          "total": 11,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Macro Mondays",
+      "total_calls": 20,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 20,
+      "high_confidence_calls": 6,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 18,
+          "correct": 0
+        },
+        "crypto": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Kevin Muir",
+      "total_calls": 7,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 7,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 6,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Mel Mattison",
+      "total_calls": 7,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 7,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "equities": {
+          "total": 2,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 3,
+          "correct": 0
+        },
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Joseph Wang",
+      "total_calls": 6,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 6,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 4,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Warren Pies",
+      "total_calls": 6,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 6,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 6,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "With Dale Pinkert",
+      "total_calls": 6,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 6,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Alex Gurevich",
+      "total_calls": 5,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 5,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 4,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Andy Constan",
+      "total_calls": 5,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 5,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 4,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Jonny Matthews",
+      "total_calls": 5,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 5,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 4,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Danny Dayan",
+      "total_calls": 5,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 5,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        },
+        "equities": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Keith Dicker",
+      "total_calls": 4,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 4,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Jeff deGraaf",
+      "total_calls": 4,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 4,
+      "high_confidence_calls": 3,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Jeff Dorman",
+      "total_calls": 4,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 4,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        },
+        "equities": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Debate Fallout",
+      "total_calls": 4,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 4,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 4,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Jordi Visser",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Warren Mosler",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Eric Wallerstein",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Tony Greer",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Alfonso Peccatiello",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "David Beckworth",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Ben Kizemchuk",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Brent Donnelly",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Paul Hodges",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Maleeha Bengali",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Rekt Vision",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "crypto": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "David Rosenberg",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Ben Miller",
+      "total_calls": 3,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 3,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 3,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "David Grider",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "crypto": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Joe McCann",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Vincent Delaurd",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "David Cervantes & DCP",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Market Radar",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Dan Tapiero",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Vincent Deluard",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Andreas Steno Larsen",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Le Shrub",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Neil Dutta",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Danielle DiMartino Booth",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Mohamed El-Erian",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        },
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Jens Nordvig",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Benn Eifert",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        },
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Alex Campbell",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 2,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "equities": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Michael Kao",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        },
+        "commodities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Macro Meets Crypto",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Dale Pinkert",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Scott Bessent",
+      "total_calls": 2,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 2,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 2,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Bonds Are Dead",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Matt Hougan LIVE  DAS",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "crypto": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Austin Campbell",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Aahan Menon",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Citrini",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "equities": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Permissionless IV Recap",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "David Cervantes",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Harris Kupperman",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Daniel",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Kristin Smith",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "crypto": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Yat Siu",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "crypto": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "#quantum #ai #crypto",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Market Risk Management Strategies",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 0,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
+    },
+    {
+      "analyst": "Ron William",
+      "total_calls": 1,
+      "scored_calls": 0,
+      "correct_calls": 0,
+      "pending_calls": 1,
+      "high_confidence_calls": 1,
+      "accuracy_pct": null,
+      "is_priority": false,
+      "by_asset_class": {
+        "rates": {
+          "total": 1,
+          "correct": 0
+        }
+      }
     }
   ],
   "channel_status": {
-    "Bloomberg_Television": 6,
-    "Maggie_Lake_Talking_Markets": 10
+    "Forward_Guidance": {
+      "count": 200,
+      "latest": "2026-03-18T14:32:47.949650"
+    },
+    "All-In_Podcast": {
+      "count": 2,
+      "latest": "2026-03-17T07:27:47.613389"
+    },
+    "Bloomberg_Television": {
+      "count": 10,
+      "latest": "2026-03-17T07:27:47.616014"
+    },
+    "Sweat_Equity": {
+      "count": 1,
+      "latest": "2026-03-17T07:27:47.672328"
+    },
+    "Real_Vision": {
+      "count": 229,
+      "latest": "2026-03-19T00:23:19.708417"
+    },
+    "42_Macro": {
+      "count": 2,
+      "latest": "2026-03-17T07:27:47.612615"
+    },
+    "Raoul_Pal_The_Journey_Man": {
+      "count": 1,
+      "latest": "2026-03-17T07:27:47.671008"
+    },
+    "The_Monetary_Matters_Network": {
+      "count": 2,
+      "latest": "2026-03-17T07:27:47.673261"
+    },
+    "The_Macro_Dirt_Podcast": {
+      "count": 2,
+      "latest": "2026-03-17T07:27:47.672675"
+    },
+    "Maggie_Lake_Talking_Markets": {
+      "count": 2,
+      "latest": "2026-03-17T07:27:47.670750"
+    }
   },
-  "total_transcripts": 200,
-  "total_calls": 16
+  "latest_transcripts": [
+    {
+      "title": "Analysis: Has Bitcoin (Really) Outshined Gold? ft. Maleeha Bengali",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-23_Has_Bitcoin_Really_Outshined_Gold_ft_Maleeha_Bengali.md",
+      "file": "2026-03-18_NA_Has_Bitcoin_Really_Outshined_Gold_ft._Maleeha_B.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Is the U.S. Economy on the Edge? ft. @DanielLacalleOfficial",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-17_Is_the_US_Economy_on_the_Edge_ft_DanielLacalleOfficial.md",
+      "file": "2026-03-18_NA_Is_the_U.S._Economy_on_the_Edge_ft._DanielLacall.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: From Inflation to AI: Diego Parrilla\u2019s Framework for Market Survival",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-24_From_Inflation_to_AI_Diego_Parrillas_Framework_for_Market_Su.md",
+      "file": "2026-03-18_NA_From_Inflation_to_AI_Diego_Parrillas_Framework_f.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Darius Dale: The Secret to Decoding the Macro Puzzle",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-16_Darius_Dale_The_Secret_to_Decoding_the_Macro_Puzzle.md",
+      "file": "2026-03-18_NA_Darius_Dale_The_Secret_to_Decoding_the_Macro_Puzz.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Pro Crypto: Coinbase Market Predictions for 2025",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2025-01-15_Pro_Crypto_Coinbase_Market_Predictions_for_2025.md",
+      "file": "2026-03-18_NA_Pro_Crypto_Coinbase_Market_Predictions_for_2025.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Can Tariffs REALLY Crash the Economy? Macro Monday",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2025-02-10_Can_Tariffs_REALLY_Crash_the_Economy_Macro_Monday.md",
+      "file": "2026-03-18_NA_Can_Tariffs_REALLY_Crash_the_Economy_Macro_Monday.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Jim Bianco: Who Will Win the Fed\u2019s Tug-of-War?",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-31_Jim_Bianco_Who_Will_Win_the_Feds_Tug-of-War.md",
+      "file": "2026-03-18_NA_Jim_Bianco_Who_Will_Win_the_Feds_Tug-of-War.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: Cem Karsan: How to Digest the Fed Rate Cut",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/Real_Vision/2024-12-30_Cem_Karsan_How_to_Digest_the_Fed_Rate_Cut.md",
+      "file": "2026-03-18_NA_Cem_Karsan_How_to_Digest_the_Fed_Rate_Cut.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: 365 \u2012 Training for longevity: A roundtable on building strength, preventing injury, protein, & more",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/health/Peter_Attia_MD/2025-01-01_365_Training_for_longevity_A_roundtable_on_building_strength.md",
+      "file": "2026-03-18_Peter_Attia_MD_365__Training_for_longevity_A_roundtable_on_buil.md",
+      "date": "2026-03-18"
+    },
+    {
+      "title": "Analysis: 369 \u2012 Rethinking protein needs for muscle and longevity, and the benefits of creatine & sauna use",
+      "summary": "source: /Users/jameshuertas/Documents/Claude/transcripts/health/Peter_Attia_MD/2025-01-01_369_Rethinking_protein_needs_for_muscle_and_longevity_and_th.md",
+      "file": "2026-03-18_Peter_Attia_MD_369__Rethinking_protein_needs_for_muscle_and_long.md",
+      "date": "2026-03-18"
+    }
+  ]
 }
