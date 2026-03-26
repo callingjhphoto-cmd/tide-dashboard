@@ -3,671 +3,1166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIDE | Alpha Terminal</title>
+<title>Alpha Intelligence Platform</title>
+<meta name="description" content="Alpha Portfolio Intelligence System — Autonomous Investment Operating System">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F5F5F7;--surface:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;
+  --navy:#0B1D3A;--navy-light:#1E3A5F;
+  --text-primary:#111827;--text-secondary:#6B7280;--text-tertiary:#9CA3AF;
+  --accent:#2563EB;--accent-light:#EFF6FF;--accent-dark:#1D4ED8;
+  --green:#059669;--green-light:#ECFDF5;
+  --red:#DC2626;--red-light:#FEF2F2;
+  --orange:#D97706;--orange-light:#FFFBEB;
+  --purple:#7C3AED;--purple-light:#F5F3FF;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.08);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --transition-fast:0.15s ease;
+  --transition-med:0.25s ease;
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:'tnum' 1,'ss01' 1;font-variant-numeric:tabular-nums}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Header */
+.header{background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 40px;position:sticky;top:0;z-index:100}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy)}
+.header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;letter-spacing:-0.5px;box-shadow:0 2px 8px rgba(11,29,58,0.2)}
+.logo-text{font-size:18px;font-weight:700;letter-spacing:-0.3px;color:var(--navy)}
+.logo-text span{color:var(--text-tertiary);font-weight:400;font-size:13px;margin-left:8px}
+.nav-tabs{display:flex;gap:2px;background:var(--bg);border-radius:10px;padding:3px}
+.nav-tab{padding:7px 16px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;transition:all 0.2s ease;border:none;background:none;white-space:nowrap;font-family:inherit}
+.nav-tab:hover{color:var(--text-primary);background:rgba(255,255,255,0.6)}
+.nav-tab.active{background:var(--surface);color:var(--text-primary);box-shadow:var(--shadow-sm);font-weight:600}
+.header-right{display:flex;align-items:center;gap:14px}
+.api-badge{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.api-dot{width:7px;height:7px;border-radius:50%}
+.api-dot.live{background:var(--green)}.api-dot.offline{background:var(--red);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.paper-badge{padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;background:var(--orange-light);color:var(--orange)}
 
-:root {
-  --bg-0: #0a0e14;
-  --bg-1: #0d1117;
-  --bg-2: #111820;
-  --bg-3: #1a2332;
-  --border: #1e2d3d;
-  --border-hi: #2a4060;
-  --green: #00ff88;
-  --green-d: #00cc6a;
-  --amber: #ffb300;
-  --amber-d: #cc8f00;
-  --red: #ff4444;
-  --red-d: #cc3333;
-  --cyan: #00d4ff;
-  --white: #e0e8f0;
-  --white-d: #8899aa;
-  --white-dd: #556677;
-  --blue: #4488ff;
-  --purple: #aa66ff;
-  --font: 'JetBrains Mono', 'Courier New', monospace;
-}
+/* Main layout */
+.main{max-width:1440px;margin:0 auto;padding:28px 40px 60px}
+.section{margin-bottom:48px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);display:flex;align-items:center;gap:10px}
 
-body {
-  background: var(--bg-0);
-  color: var(--white);
-  font-family: var(--font);
-  font-size: 12px;
-  line-height: 1.4;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);transition:box-shadow 0.25s ease}
+.card:hover{box-shadow:var(--shadow-md)}
+.card-title{font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;letter-spacing:-0.2px}
+.card-subtitle{font-size:13px;color:var(--text-secondary);margin-bottom:16px}
 
-/* ===== TOP BAR ===== */
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 16px;
-  background: var(--bg-1);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-.top-bar .brand {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--green);
-  letter-spacing: 2px;
-}
-.top-bar .brand span { color: var(--white-d); font-weight: 400; font-size: 10px; letter-spacing: 0; margin-left: 8px; }
-.top-bar .clock { color: var(--amber); font-size: 11px; font-weight: 500; }
-.top-bar .market-status { font-size: 10px; padding: 2px 8px; border-radius: 3px; font-weight: 600; }
-.top-bar .market-status.open { background: rgba(0,255,136,0.15); color: var(--green); border: 1px solid rgba(0,255,136,0.3); }
-.top-bar .market-status.closed { background: rgba(255,68,68,0.15); color: var(--red); border: 1px solid rgba(255,68,68,0.3); }
-.top-bar .indices { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-.top-bar .idx { display: flex; gap: 6px; align-items: center; }
-.top-bar .idx .lbl { color: var(--white-dd); font-size: 10px; }
-.top-bar .idx .val { font-weight: 600; font-size: 11px; }
-.top-bar .idx .chg { font-size: 10px; font-weight: 500; }
+/* Grid */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.grid-1-2{display:grid;grid-template-columns:1fr 2fr;gap:18px}
 
-/* ===== GRID ===== */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 1px;
-  background: var(--border);
-  min-height: calc(100vh - 36px);
-}
+/* KPI */
+.kpi-card{text-align:center;padding:20px}
+.kpi-value{font-size:32px;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+.kpi-label{font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.5px}
+.kpi-change{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;margin-top:6px;padding:2px 10px;border-radius:100px}
+.kpi-change.up{background:var(--green-light);color:var(--green)}
+.kpi-change.down{background:var(--red-light);color:var(--red)}
+.kpi-change.neutral{background:var(--border-light);color:var(--text-secondary)}
 
-/* ===== PANEL ===== */
-.panel {
-  background: var(--bg-1);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.panel-hdr {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.panel-hdr h2 {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--cyan);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.panel-hdr .tag {
-  font-size: 9px;
-  color: var(--white-dd);
-  background: var(--bg-3);
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-.panel-body {
-  padding: 8px 12px;
-  flex: 1;
-  overflow-y: auto;
-}
+/* Regime indicator */
+.regime-card{border-left:4px solid var(--navy);padding:24px 28px}
+.regime-phase{font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px}
+.regime-phase.risk-off{color:var(--red)}.regime-phase.risk-on{color:var(--green)}.regime-phase.transition{color:var(--orange)}
+.regime-sub{font-size:14px;font-weight:600;color:var(--text-secondary);margin-bottom:12px}
+.regime-driver{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light)}
+.regime-driver:last-child{border-bottom:none}
+.regime-driver-dot{width:6px;height:6px;border-radius:50%;margin-top:6px;flex-shrink:0}
 
-/* ===== PRICE GRID ===== */
-.price-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-}
-.price-card {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px;
-  transition: border-color 0.3s;
-}
-.price-card:hover { border-color: var(--border-hi); }
-.price-card .sym { font-size: 10px; color: var(--white-dd); font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
-.price-card .sym .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-.price-card .price { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-.price-card .changes { display: flex; gap: 8px; font-size: 10px; }
-.price-card .changes span { font-weight: 500; }
-.price-card .changes .lbl { color: var(--white-dd); }
-.price-card.flash-green { animation: flashGreen 0.4s; }
-.price-card.flash-red { animation: flashRed 0.4s; }
+/* Signal bars */
+.signal-bar{margin-bottom:12px}
+.signal-bar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.signal-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+.signal-score{font-size:13px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.bar-track{height:8px;background:var(--border-light);border-radius:100px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:100px;transition:width 1s ease}
+.bar-center{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--text-tertiary);opacity:0.3}
 
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-@keyframes flashGreen { 0% { background: rgba(0,255,136,0.15); } 100% { background: var(--bg-2); } }
-@keyframes flashRed { 0% { background: rgba(255,68,68,0.15); } 100% { background: var(--bg-2); } }
+/* Advisory council */
+.advisor-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-light)}
+.advisor-row:last-child{border-bottom:none}
+.advisor-avatar{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.advisor-info{flex:1;min-width:0}
+.advisor-name{font-size:14px;font-weight:600;color:var(--text-primary)}
+.advisor-philosophy{font-size:11px;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.advisor-vote{padding:4px 14px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;flex-shrink:0}
+.vote-approve{background:var(--green-light);color:var(--green)}
+.vote-veto{background:var(--red-light);color:var(--red)}
+.vote-adjust{background:var(--orange-light);color:var(--orange)}
+.vote-skip{background:var(--border-light);color:var(--text-tertiary)}
 
-/* ===== MACRO DASHBOARD ===== */
-.macro-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
-.macro-item {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px;
-}
-.macro-item .label { font-size: 9px; color: var(--white-dd); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-.macro-item .value { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
-.macro-item .detail { font-size: 10px; color: var(--white-d); }
-.macro-item .trend { font-size: 10px; font-weight: 500; margin-top: 4px; }
+/* Howell cycle gauge */
+.cycle-gauge{position:relative;width:100%;height:60px;margin:16px 0}
+.cycle-track{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--border-light)}
+.cycle-segment{height:100%;transition:opacity 0.3s}
+.cycle-labels{display:flex;justify-content:space-between;margin-top:8px}
+.cycle-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.3px;color:var(--text-tertiary);text-align:center;flex:1}
+.cycle-marker{position:absolute;top:0;width:4px;height:18px;background:var(--navy);border-radius:2px;transition:left 0.6s cubic-bezier(0.4,0,0.2,1)}
+.cycle-marker::after{content:'NOW';position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:var(--navy);letter-spacing:0.5px}
 
-/* ===== ANALYST TABLE ===== */
-.analyst-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.analyst-table th {
-  text-align: left;
-  padding: 6px 8px;
-  font-size: 9px;
-  color: var(--white-dd);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
-  font-weight: 600;
-}
-.analyst-table td {
-  padding: 7px 8px;
-  font-size: 11px;
-  border-bottom: 1px solid rgba(30,45,61,0.5);
-}
-.analyst-table tr:hover td { background: rgba(0,212,255,0.03); }
-.analyst-table .name { color: var(--white); font-weight: 500; }
-.analyst-table .acc-high { color: var(--green); font-weight: 600; }
-.analyst-table .acc-mid { color: var(--amber); font-weight: 600; }
-.analyst-table .acc-low { color: var(--red); font-weight: 600; }
-.sample-badge {
-  display: inline-block;
-  font-size: 9px;
-  color: var(--amber);
-  background: rgba(255,179,0,0.1);
-  border: 1px solid rgba(255,179,0,0.3);
-  padding: 2px 6px;
-  border-radius: 2px;
-  margin-bottom: 8px;
-}
+/* Asset cards */
+.asset-strip{display:flex;gap:20px;padding:12px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;overflow-x:auto;box-shadow:var(--shadow-sm)}
+.asset-item{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.asset-item-label{font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px}
+.asset-item-value{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text-primary)}
+.asset-item-change{font-size:12px;font-weight:600}
+.asset-item-change.up{color:var(--green)}.asset-item-change.down{color:var(--red)}
+.asset-divider{width:1px;background:var(--border);align-self:stretch}
 
-/* ===== SIGNAL DASHBOARD ===== */
-.signal-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4px;
-}
-.signal-row {
-  display: grid;
-  grid-template-columns: 100px 70px 1fr 80px;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-}
-.signal-row .asset-name { font-size: 11px; font-weight: 600; color: var(--white); }
-.signal-row .asset-ticker { font-size: 10px; color: var(--white-dd); }
-.signal-bar { height: 6px; border-radius: 3px; background: var(--bg-3); position: relative; overflow: hidden; }
-.signal-bar .fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
-.signal-badge {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 3px;
-  text-align: center;
-}
-.signal-badge.bullish { color: var(--green); background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); }
-.signal-badge.neutral { color: var(--amber); background: rgba(255,179,0,0.1); border: 1px solid rgba(255,179,0,0.3); }
-.signal-badge.bearish { color: var(--red); background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.3); }
+/* Tables */
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table thead th{text-align:left;padding:12px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-tertiary);border-bottom:2px solid var(--border)}
+.data-table tbody td{padding:12px 14px;border-bottom:1px solid var(--border-light);color:var(--text-secondary)}
+.data-table tbody td:first-child{font-weight:600;color:var(--text-primary)}
+.data-table tbody tr:hover{background:var(--accent-light)}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:600}
 
-/* ===== NEWS FEED ===== */
-.news-list { display: flex; flex-direction: column; gap: 2px; }
-.news-item {
-  display: grid;
-  grid-template-columns: 55px 80px 1fr;
-  gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(30,45,61,0.3);
-  align-items: center;
+/* Tab system */
+.tab-content{display:none;opacity:0}.tab-content.active{display:block;animation:tabFadeIn 0.35s ease forwards}
+@keyframes tabFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Conviction badges */
+.conviction-badge{display:inline-flex;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.conv-bullish{background:var(--green-light);color:var(--green)}
+.conv-bearish{background:var(--red-light);color:var(--red)}
+.conv-neutral{background:var(--border-light);color:var(--text-secondary)}
+
+/* Insight boxes */
+.insight-box{background:var(--accent-light);border:1px solid rgba(37,99,235,0.12);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--accent)}
+.insight-box .insight-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:6px}
+.insight-box .insight-text{font-size:13px;color:var(--text-primary);line-height:1.5}
+.insight-box.warning{background:var(--red-light);border-left-color:var(--red)}
+.insight-box.warning .insight-label{color:var(--red)}
+.insight-box.caution{background:var(--orange-light);border-left-color:var(--orange)}
+.insight-box.caution .insight-label{color:var(--orange)}
+
+/* Score rings */
+.score-ring{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;margin:0 auto 10px;position:relative;letter-spacing:-1px;font-family:'JetBrains Mono',monospace}
+.score-ring::before{content:'';position:absolute;inset:0;border-radius:50%;border:4px solid var(--border-light)}
+
+/* Portfolio position cards */
+.position-card{background:var(--bg);border-radius:var(--radius-sm);padding:16px 20px;display:flex;align-items:center;gap:16px}
+.position-asset{font-size:18px;font-weight:800;color:var(--navy);min-width:48px}
+.position-details{flex:1}
+.position-direction{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.position-direction.long{color:var(--green)}.position-direction.short{color:var(--red)}
+.position-size{font-size:13px;color:var(--text-secondary)}
+.position-pnl{font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.position-empty{text-align:center;padding:40px 20px;color:var(--text-tertiary);font-size:14px}
+
+/* Backtest metrics */
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric-cell{text-align:center;padding:16px 12px;border-radius:var(--radius-sm);background:var(--bg)}
+.metric-value{font-size:24px;font-weight:800;letter-spacing:-0.5px;font-family:'JetBrains Mono',monospace;line-height:1.2}
+.metric-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-secondary);margin-top:4px}
+
+/* Transcript insight */
+.transcript-item{padding:14px 0;border-bottom:1px solid var(--border-light)}
+.transcript-item:last-child{border-bottom:none}
+.transcript-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.transcript-analyst{font-size:14px;font-weight:600;color:var(--text-primary)}
+.transcript-date{font-size:11px;color:var(--text-tertiary)}
+.transcript-call{font-size:13px;color:var(--text-secondary);line-height:1.4}
+.transcript-direction{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase;margin-right:6px}
+.dir-bullish{background:var(--green-light);color:var(--green)}
+.dir-bearish{background:var(--red-light);color:var(--red)}
+
+/* Chart containers */
+.chart-container{position:relative;height:260px;margin-top:12px}
+
+/* Responsive */
+@media(max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:repeat(2,1fr)}
+  .main{padding:20px}
 }
-.news-item:hover { background: rgba(0,212,255,0.02); }
-.news-item .time { font-size: 10px; color: var(--white-dd); }
-.news-item .source { font-size: 9px; color: var(--cyan); font-weight: 600; letter-spacing: 0.5px; }
-.news-item .headline { font-size: 11px; color: var(--white); }
-.news-item .headline:hover { color: var(--green); cursor: pointer; }
-
-/* ===== TRANSCRIPT INSIGHTS ===== */
-.transcript-list { display: flex; flex-direction: column; gap: 4px; }
-.transcript-item {
-  padding: 8px 10px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-}
-.transcript-item .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.transcript-item .channel { font-size: 10px; color: var(--cyan); font-weight: 600; }
-.transcript-item .date { font-size: 9px; color: var(--white-dd); }
-.transcript-item .takeaway { font-size: 11px; color: var(--white-d); line-height: 1.5; }
-
-/* ===== UP/DOWN COLORS ===== */
-.up { color: var(--green) !important; }
-.down { color: var(--red) !important; }
-.flat { color: var(--white-d) !important; }
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-1); }
-::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
-  .price-grid { grid-template-columns: repeat(2, 1fr); }
-  .macro-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
-  .price-grid { grid-template-columns: repeat(2, 1fr); }
-  .macro-grid { grid-template-columns: repeat(2, 1fr); }
-  .top-bar .indices { display: none; }
+@media(max-width:768px){
+  .grid-4,.grid-3,.grid-2,.grid-2-1,.grid-1-2{grid-template-columns:1fr}
+  .header{padding:0 16px}
+  .nav-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== TOP BAR ===== -->
-<div class="top-bar">
-  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-    <div class="brand">TIDE<span>Alpha Terminal v2.0</span></div>
-    <div class="clock" id="clock">--:--:--</div>
-    <div class="market-status closed" id="market-status">US CLOSED</div>
-  </div>
-  <div class="indices" id="top-indices">
-    <div class="idx"><span class="lbl">SPX</span> <span class="val" id="tb-spx">5,667.0</span> <span class="chg up" id="tb-spx-chg">+0.42%</span></div>
-    <div class="idx"><span class="lbl">DXY</span> <span class="val" id="tb-dxy">103.82</span> <span class="chg down" id="tb-dxy-chg">-0.18%</span></div>
-    <div class="idx"><span class="lbl">BTC</span> <span class="val" id="tb-btc">--</span> <span class="chg" id="tb-btc-chg">--</span></div>
-    <div class="idx"><span class="lbl">GOLD</span> <span class="val" id="tb-gold">3,021.4</span> <span class="chg up" id="tb-gold-chg">+0.67%</span></div>
-    <div class="idx"><span class="lbl">VIX</span> <span class="val" id="tb-vix">16.8</span></div>
-    <div class="idx"><span class="lbl">10Y</span> <span class="val" id="tb-tnx">4.31%</span></div>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">A</div>
+      <div class="logo-text">Alpha<span>Intelligence Platform</span></div>
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
+      <button class="nav-tab" onclick="showTab('signals')">Signals</button>
+      <button class="nav-tab" onclick="showTab('council')">Council</button>
+      <button class="nav-tab" onclick="showTab('backtest')">Backtest</button>
+      <button class="nav-tab" onclick="showTab('transcripts')">Transcripts</button>
+    </div>
+    <div class="header-right">
+      <span class="paper-badge">Paper Mode</span>
+      <div class="api-badge">
+        <div class="api-dot" id="apiDot"></div>
+        <span id="apiStatus">Loading</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ===== MAIN GRID ===== -->
-<div class="grid">
+<!-- ASSET STRIP -->
+<div class="main">
+  <div class="asset-strip" id="assetStrip">
+    <div class="asset-item"><span class="asset-item-label">BTC</span><span class="asset-item-value" id="btcPrice">--</span><span class="asset-item-change" id="btcChange">--</span></div>
+    <div class="asset-divider"></div>
+    <div class="asset-item"><span class="asset-item-label">ETH</span><span class="asset-item-value" id="ethPrice">--</span><span class="asset-item-change" id="ethChange">--</span></div>
+    <div class="asset-divider"></div>
+    <div class="asset-item"><span class="asset-item-label">SOL</span><span class="asset-item-value" id="solPrice">--</span><span class="asset-item-change" id="solChange">--</span></div>
+    <div class="asset-divider"></div>
+    <div class="asset-item"><span class="asset-item-label">S&P 500</span><span class="asset-item-value" id="spxPrice">--</span></div>
+    <div class="asset-divider"></div>
+    <div class="asset-item"><span class="asset-item-label">Gold</span><span class="asset-item-value" id="goldPrice">--</span></div>
+    <div class="asset-divider"></div>
+    <div class="asset-item"><span class="asset-item-label">DXY</span><span class="asset-item-value" id="dxyPrice">--</span></div>
+  </div>
 
-  <!-- PANEL 1: PRICE GRID -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>Price Grid</h2>
-      <span class="tag">LIVE CRYPTO / DELAYED TRAD-FI</span>
+  <!-- TAB: OVERVIEW -->
+  <div class="tab-content active" id="tab-overview">
+
+    <!-- KPI Strip -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Portfolio Overview</div></div>
+      <div class="grid-4">
+        <div class="card kpi-card">
+          <div class="kpi-value" id="kpiEquity">$10,000</div>
+          <div class="kpi-label">Equity</div>
+          <div class="kpi-change neutral" id="kpiEquityChange">0.00%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="kpi-value" id="kpiExposure">0%</div>
+          <div class="kpi-label">Exposure</div>
+          <div class="kpi-change neutral">No positions</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="kpi-value" id="kpiDailyPnl">$0.00</div>
+          <div class="kpi-label">Daily P&L</div>
+          <div class="kpi-change neutral" id="kpiDailyChange">0.00%</div>
+        </div>
+        <div class="card kpi-card">
+          <div class="kpi-value" id="kpiTotalPnl">$0.00</div>
+          <div class="kpi-label">Total P&L</div>
+          <div class="kpi-change neutral" id="kpiTotalChange">0.00%</div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="price-grid" id="price-grid"></div>
+
+    <!-- Regime + Positions -->
+    <div class="section">
+      <div class="grid-2-1">
+        <!-- Regime -->
+        <div class="card regime-card">
+          <div class="card-title">Market Regime</div>
+          <div class="regime-phase" id="regimePhase">--</div>
+          <div class="regime-sub" id="regimeSub">Loading regime data...</div>
+
+          <!-- Howell Cycle Gauge -->
+          <div style="margin-top:20px">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-tertiary);margin-bottom:8px">Howell Liquidity Cycle (65-month)</div>
+            <div class="cycle-gauge">
+              <div class="cycle-marker" id="cycleMarker" style="left:66%"></div>
+              <div class="cycle-track">
+                <div class="cycle-segment" style="flex:1;background:var(--red);opacity:0.6"></div>
+                <div class="cycle-segment" style="flex:1;background:var(--orange);opacity:0.6"></div>
+                <div class="cycle-segment" style="flex:1;background:var(--green);opacity:0.4"></div>
+                <div class="cycle-segment" style="flex:1;background:var(--green);opacity:0.8"></div>
+                <div class="cycle-segment" style="flex:1;background:var(--orange);opacity:0.8"></div>
+                <div class="cycle-segment" style="flex:1;background:var(--red);opacity:0.8"></div>
+              </div>
+              <div class="cycle-labels">
+                <span class="cycle-label">Trough</span>
+                <span class="cycle-label">Pre-Exp</span>
+                <span class="cycle-label">Early Exp</span>
+                <span class="cycle-label">Late Exp</span>
+                <span class="cycle-label">Peak</span>
+                <span class="cycle-label">Contraction</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Drivers -->
+          <div style="margin-top:16px" id="keyDrivers"></div>
+        </div>
+
+        <!-- Active Positions -->
+        <div class="card">
+          <div class="card-title">Active Positions</div>
+          <div class="card-subtitle">Paper trading mode</div>
+          <div id="positionsContainer">
+            <div class="position-empty">No open positions<br><span style="font-size:12px">System is in neutral / waiting for signal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asset Recommendations -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Asset Recommendations</div></div>
+      <div class="grid-3" id="assetRecs">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- Insights -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Intelligence Briefing</div></div>
+      <div class="insight-box warning">
+        <div class="insight-label">Howell Framework Alert</div>
+        <div class="insight-text">Global liquidity peaked at $188.8T in Q3/Q4 2025. The 65-month cycle is now in Early Contraction phase. $40 trillion refinancing wall by 2027 absorbs available liquidity -- this is a structural headwind for all risk assets. Buy gold and BTC on weakness only (20-25% below trend). Equities should decline by end of 2026.</div>
+      </div>
+      <div class="insight-box caution">
+        <div class="insight-label">Advisory Council Status</div>
+        <div class="insight-text">5 of 7 advisors are in "dormant" mode due to lack of real-time macro data feeds (FRED API, M2 data, yield curve). Advisors Dalio, PTJ, Marks, Howell, and Felman have reduced voting weight (40% penalty). Priority: connect macro_data_feed.py to FRED API for full council activation.</div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">System Architecture</div>
+        <div class="insight-text">6-agent pipeline operational: Research Integrator -> Market Regime -> Signal Aggregator -> Risk Manager -> Advisory Council (7 personas) -> Trade Executor. 10 technical indicators + 8 on-chain signals + BMA ensemble. Paper trading Day 1: $10K starting equity, 0 trades (neutral signals + conservative regime = correct behaviour).</div>
+      </div>
     </div>
   </div>
 
-  <!-- PANEL 2: MACRO DASHBOARD -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>Macro Dashboard</h2>
-      <span class="tag">REGIME INDICATORS</span>
+  <!-- TAB: SIGNALS -->
+  <div class="tab-content" id="tab-signals">
+    <div class="section">
+      <div class="section-header"><div class="section-title">Signal Aggregator</div></div>
+      <div class="grid-2">
+        <!-- Composite Signal -->
+        <div class="card">
+          <div class="card-title">Composite Signal</div>
+          <div class="card-subtitle">BMA (Bayesian Model Averaging) with regime-conditioned weights</div>
+          <div id="compositeSignals">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Signal Streams -->
+        <div class="card">
+          <div class="card-title">Three-Stream Breakdown</div>
+          <div class="card-subtitle">Technical (35%) + Fundamental (40%) + Sentiment (25%)</div>
+          <div id="streamBreakdown">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="macro-grid" id="macro-grid"></div>
+
+    <!-- Individual Indicators -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Individual Indicators (10)</div></div>
+      <div class="grid-2">
+        <div class="card" id="indicatorsBTC">
+          <div class="card-title">BTC Indicators</div>
+          <div class="card-subtitle">10 signals, normalised -100 to +100</div>
+          <!-- Filled by JS -->
+        </div>
+        <div class="card" id="indicatorsETH">
+          <div class="card-title">ETH Indicators</div>
+          <div class="card-subtitle">10 signals, normalised -100 to +100</div>
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- On-Chain Signals -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">On-Chain Signals (8)</div></div>
+      <div class="card" id="onChainSignals">
+        <div class="card-title">On-Chain Alpha</div>
+        <div class="card-subtitle">MVRV, Funding Rate, Exchange Flows, Stablecoin Supply, SOPR, BTC Dominance, Halving Cycle, Fear/Greed</div>
+        <!-- Filled by JS -->
+      </div>
     </div>
   </div>
 
-  <!-- PANEL 3: ANALYST LEADERBOARD -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>Analyst Leaderboard</h2>
-      <span class="tag">RANKED BY ACCURACY</span>
+  <!-- TAB: COUNCIL -->
+  <div class="tab-content" id="tab-council">
+    <div class="section">
+      <div class="section-header"><div class="section-title">Advisory Council</div></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Council Votes</div>
+          <div class="card-subtitle">7 legendary investor frameworks evaluate every trade</div>
+          <div id="councilVotes">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Voting Model</div>
+          <div class="card-subtitle">Weighted majority with supermajority veto</div>
+          <div style="padding:12px 0">
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.7">
+              <strong>Weighted Majority:</strong> Each advisor casts approve/veto/adjust with a confidence score. Votes are weighted by regime relevance, asset-class fit, and data availability.<br><br>
+              <strong>Veto Rules:</strong><br>
+              1. Weighted veto share >= 60% = full veto<br>
+              2. Both Druckenmiller AND Soros veto = dual-anchor override<br>
+              3. Any advisor flags cascade risk / extreme leverage / three death nails = hard veto (not overridable)<br><br>
+              <strong>Dormant Penalty:</strong> Advisors lacking real macro data (FRED, M2, yield curve) receive 60% weight reduction. Currently affects: Dalio, PTJ, Marks, Howell, Felman.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="sample-badge">SAMPLE DATA &mdash; Live scoring in development</div>
-      <table class="analyst-table" id="analyst-table">
-        <thead><tr><th>#</th><th>Analyst</th><th>Calls</th><th>Accuracy</th><th>Avg Return</th><th>Best Call</th></tr></thead>
-        <tbody id="analyst-tbody"></tbody>
-      </table>
+
+    <!-- Council Decision -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Latest Council Decision</div></div>
+      <div class="card" id="councilDecision">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- Advisor Profiles -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Advisor Profiles</div></div>
+      <div class="grid-3" id="advisorProfiles">
+        <!-- Filled by JS -->
+      </div>
     </div>
   </div>
 
-  <!-- PANEL 4: SIGNAL DASHBOARD -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>Signal Dashboard</h2>
-      <span class="tag">SIGNAL MODEL v0.1 &mdash; SAMPLE</span>
+  <!-- TAB: BACKTEST -->
+  <div class="tab-content" id="tab-backtest">
+    <div class="section">
+      <div class="section-header"><div class="section-title">Backtest Results (120-day, 1H candles)</div></div>
+
+      <!-- Metrics Grid -->
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-title">Performance Metrics</div>
+        <div class="card-subtitle">BTC/ETH/SOL | $10K starting capital | Paper mode</div>
+        <div class="metric-grid" id="backtestMetrics">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- By Asset -->
+      <div class="grid-3" id="backtestByAsset">
+        <!-- Filled by JS -->
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="sample-badge">Pine Script + Macro Regime + Momentum Composite</div>
-      <div class="signal-grid" id="signal-grid"></div>
+
+    <!-- Equity Curve -->
+    <div class="section">
+      <div class="card">
+        <div class="card-title">Equity Curve</div>
+        <div class="card-subtitle">Simulated portfolio value over 120 days</div>
+        <div class="chart-container">
+          <canvas id="equityChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exit Analysis -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Exit Reason Analysis</div></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Exit Distribution</div>
+          <div class="chart-container" style="height:200px">
+            <canvas id="exitChart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Improvement Notes</div>
+          <div class="card-subtitle">Ralph Loop iteration findings</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.7" id="backtestNotes">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- PANEL 5: NEWS FEED -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>News Feed</h2>
-      <span class="tag">SAMPLE HEADLINES</span>
+  <!-- TAB: TRANSCRIPTS -->
+  <div class="tab-content" id="tab-transcripts">
+    <div class="section">
+      <div class="section-header"><div class="section-title">Analyst Calls (494 extracted)</div></div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Top Analysts by Call Volume</div>
+          <div class="card-subtitle">From 11 macro podcast channels</div>
+          <div id="analystLeaderboard">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Recent Calls</div>
+          <div class="card-subtitle">Latest directional market calls from transcripts</div>
+          <div id="recentCalls">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="news-list" id="news-list"></div>
-    </div>
-  </div>
 
-  <!-- PANEL 6: TRANSCRIPT INSIGHTS -->
-  <div class="panel">
-    <div class="panel-hdr">
-      <h2>Transcript Insights</h2>
-      <span class="tag">LATEST MACRO PODCAST SUMMARIES</span>
-    </div>
-    <div class="panel-body">
-      <div class="transcript-list" id="transcript-list"></div>
+    <!-- Target Analysts -->
+    <div class="section">
+      <div class="section-header"><div class="section-title">Target Analyst Coverage</div></div>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Analyst</th>
+              <th>Source</th>
+              <th>Focus</th>
+              <th>Calls</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jim Bianco</td><td>Forward Guidance</td><td>Macro / Rates</td><td class="mono">19</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Cem Karsan</td><td>Forward Guidance</td><td>Options / Vol</td><td class="mono">12</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Kevin Muir</td><td>Forward Guidance</td><td>Macro</td><td class="mono">7</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Mel Mattison</td><td>Forward Guidance</td><td>Credit / Debt</td><td class="mono">7</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Lyn Alden</td><td>Various</td><td>Fiscal / BTC</td><td class="mono">6</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Raoul Pal</td><td>Real Vision</td><td>Macro / Crypto</td><td class="mono">6</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Darius Dale</td><td>42 Macro</td><td>GRID Framework</td><td class="mono">5</td><td><span class="conviction-badge conv-bullish">Active</span></td></tr>
+            <tr><td>Michael Howell</td><td>CrossBorder Cap</td><td>Liquidity</td><td class="mono">2</td><td><span class="conviction-badge conv-neutral">Limited</span></td></tr>
+            <tr><td>Avi Felman</td><td>1000xPod</td><td>Crypto Flows</td><td class="mono">--</td><td><span class="conviction-badge conv-bearish">Pending</span></td></tr>
+            <tr><td>Warren Pies</td><td>3Fourteen</td><td>Energy</td><td class="mono">--</td><td><span class="conviction-badge conv-bearish">Pending</span></td></tr>
+            <tr><td>Hugh Hendry</td><td>Hugh Hendry</td><td>Contrarian</td><td class="mono">--</td><td><span class="conviction-badge conv-bearish">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script>
-// ===================================================================
-//  TIDE ALPHA TERMINAL v2.0
-//  Bloomberg-style trading dashboard
-//  Live crypto via Binance WebSocket | Sample data for everything else
-// ===================================================================
+// ============================================================
+// ALPHA DASHBOARD — Data & Rendering
+// ============================================================
 
-// ===== CLOCK & MARKET STATUS =====
-function updateClock() {
-  const now = new Date();
-  const utc = now.toUTCString().slice(17, 25);
-  const ny = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  const ldn = now.toLocaleString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  var dateStr = now.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase();
-  document.getElementById('clock').textContent = dateStr + ' | UTC ' + utc + ' | NY ' + ny + ' | LDN ' + ldn;
-
-  // US market hours: 9:30-16:00 ET, Mon-Fri
-  const nyNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-  const day = nyNow.getDay();
-  const h = nyNow.getHours();
-  const m = nyNow.getMinutes();
-  const mins = h * 60 + m;
-  const isOpen = day >= 1 && day <= 5 && mins >= 570 && mins < 960;
-  const el = document.getElementById('market-status');
-  el.textContent = isOpen ? 'US MARKET OPEN' : 'US MARKET CLOSED';
-  el.className = 'market-status ' + (isOpen ? 'open' : 'closed');
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ===== ASSET DATA =====
-var assets = [
-  { id: 'btc',  sym: 'BTC',  name: 'Bitcoin',       price: 0,       chg24h: 0, chg7d: 0, live: true,  binance: 'btcusdt', decimals: 1 },
-  { id: 'eth',  sym: 'ETH',  name: 'Ethereum',      price: 0,       chg24h: 0, chg7d: 0, live: true,  binance: 'ethusdt', decimals: 2 },
-  { id: 'sol',  sym: 'SOL',  name: 'Solana',        price: 0,       chg24h: 0, chg7d: 0, live: true,  binance: 'solusdt', decimals: 2 },
-  { id: 'spx',  sym: 'SPX',  name: 'S&P 500',       price: 5667.0,  chg24h: 0.42, chg7d: 1.15, live: false, decimals: 1 },
-  { id: 'gold', sym: 'GOLD', name: 'Gold',           price: 3021.4,  chg24h: 0.67, chg7d: 2.13, live: false, decimals: 1 },
-  { id: 'oil',  sym: 'OIL',  name: 'Crude (WTI)',    price: 68.42,   chg24h: -1.23, chg7d: -3.41, live: false, decimals: 2 },
-  { id: 'dxy',  sym: 'DXY',  name: 'Dollar Index',   price: 103.82,  chg24h: -0.18, chg7d: -0.52, live: false, decimals: 2 },
-  { id: 'tnx',  sym: '10Y',  name: '10Y Yield',      price: 4.31,    chg24h: -0.02, chg7d: -0.08, live: false, decimals: 3, suffix: '%', isBps: true },
-];
-
-// Render price grid
-function renderPriceGrid() {
-  var grid = document.getElementById('price-grid');
-  grid.innerHTML = assets.map(function(a) {
-    return '<div class="price-card" id="pc-' + a.id + '">' +
-      '<div class="sym">' + a.sym + (a.live ? ' <span class="live-dot"></span>' : '') + '</div>' +
-      '<div class="price" id="price-' + a.id + '">' + (a.price === 0 ? '--' : fmtPrice(a)) + '</div>' +
-      '<div class="changes">' +
-        '<span class="lbl">24h</span><span class="' + chgClass(a.chg24h) + '" id="chg24-' + a.id + '">' + fmtChg(a.chg24h) + '</span>' +
-        '<span class="lbl">7d</span><span class="' + chgClass(a.chg7d) + '" id="chg7d-' + a.id + '">' + fmtChg(a.chg7d) + '</span>' +
-      '</div>' +
-    '</div>';
-  }).join('');
+// --- Tab Navigation ---
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.target.classList.add('active');
 }
 
-function fmtPrice(a) {
-  var p = a.price;
-  if (p === 0) return '--';
-  if (p >= 10000) return p.toLocaleString('en-US', { minimumFractionDigits: a.decimals, maximumFractionDigits: a.decimals });
-  return p.toFixed(a.decimals) + (a.suffix || '');
-}
+// --- Data Store ---
+const DATA = {
+  regime: null,
+  portfolio: null,
+  signals: null,
+  council: null,
+  backtest: null,
+  analysts: null,
+};
 
-function fmtChg(v) {
-  if (v === 0 || v === undefined) return '--';
-  return (v > 0 ? '+' : '') + v.toFixed(2) + '%';
-}
-
-function chgClass(v) {
-  if (v > 0) return 'up';
-  if (v < 0) return 'down';
-  return 'flat';
-}
-
-renderPriceGrid();
-
-// ===== BINANCE WEBSOCKET =====
-var cryptoAssets = assets.filter(function(a) { return a.live; });
-var binanceStreams = cryptoAssets.map(function(a) { return a.binance + '@ticker'; }).join('/');
-var ws;
-var prevPrices = {};
-
-function connectBinance() {
-  ws = new WebSocket('wss://stream.binance.com:9443/ws/' + binanceStreams);
-
-  ws.onmessage = function(event) {
-    var d = JSON.parse(event.data);
-    var symbol = d.s; // e.g., BTCUSDT
-    var asset = cryptoAssets.find(function(a) { return a.binance.toUpperCase() === symbol; });
-    if (!asset) return;
-
-    var newPrice = parseFloat(d.c);
-    var pctChange = parseFloat(d.P);
-    var prevPrice = prevPrices[asset.id] || newPrice;
-
-    asset.price = newPrice;
-    asset.chg24h = pctChange;
-    // 7d change is fetched separately via klines
-
-    // Update price card
-    var priceEl = document.getElementById('price-' + asset.id);
-    var chg24El = document.getElementById('chg24-' + asset.id);
-    var chg7dEl = document.getElementById('chg7d-' + asset.id);
-    var cardEl = document.getElementById('pc-' + asset.id);
-
-    if (priceEl) priceEl.textContent = fmtPrice(asset);
-    if (chg24El) { chg24El.textContent = fmtChg(asset.chg24h); chg24El.className = chgClass(asset.chg24h); }
-    if (chg7dEl) { chg7dEl.textContent = fmtChg(asset.chg7d); chg7dEl.className = chgClass(asset.chg7d); }
-
-    // Flash on price change
-    if (cardEl && newPrice !== prevPrice) {
-      cardEl.classList.remove('flash-green', 'flash-red');
-      void cardEl.offsetWidth;
-      cardEl.classList.add(newPrice > prevPrice ? 'flash-green' : 'flash-red');
-    }
-
-    prevPrices[asset.id] = newPrice;
-
-    // Update top bar BTC
-    if (asset.id === 'btc') {
-      document.getElementById('tb-btc').textContent = newPrice.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-      var chgEl = document.getElementById('tb-btc-chg');
-      chgEl.textContent = fmtChg(pctChange);
-      chgEl.className = 'chg ' + chgClass(pctChange);
-    }
+// --- Load JSON files ---
+async function loadLocalData() {
+  // Try loading from relative paths (for local dev) or embedded data
+  const paths = {
+    regime: 'regime_state.json',
+    portfolio: 'portfolio_state.json',
+    signals: 'signals.json',
+    council: 'council_decision.json',
+    backtest: 'backtest_results.json',
   };
 
-  ws.onclose = function() { setTimeout(connectBinance, 3000); };
-  ws.onerror = function() { ws.close(); };
+  for (const [key, path] of Object.entries(paths)) {
+    try {
+      const resp = await fetch(path);
+      if (resp.ok) DATA[key] = await resp.json();
+    } catch(e) { /* silent */ }
+  }
 }
-connectBinance();
 
-// ===== MACRO DASHBOARD =====
-var macroData = [
-  { label: 'Global Liquidity', value: 'EXPANDING', detail: 'M2 YoY: +4.2%', trend: 'Accelerating since Q4 2025', color: 'var(--green)' },
-  { label: 'Business Cycle', value: 'EXPANSION', detail: 'Late-cycle phase', trend: 'PMI: 52.4 (above 50)', color: 'var(--green)' },
-  { label: 'Dollar Strength', value: 'WEAKENING', detail: 'DXY: 103.82', trend: 'Down from 107.3 peak (Jan)', color: 'var(--amber)' },
-  { label: 'VIX', value: '16.8', detail: 'Low volatility regime', trend: 'Below 20 = risk-on', color: 'var(--green)' },
-  { label: 'Fed Funds Rate', value: '4.50%', detail: 'Last cut: Jan 2026', trend: 'Market expects 2 more cuts', color: 'var(--amber)' },
-  { label: 'Yield Curve', value: 'STEEPENING', detail: '2s10s: +18bps', trend: 'Un-inverted Dec 2025', color: 'var(--cyan)' },
+// --- Embedded data (fallback / default) ---
+const REGIME_DATA = {
+  regime: "Risk-Off",
+  confidence: 0.72,
+  sub_regime: "Deflation",
+  darius_dale_grid_quadrant: "Q4",
+  howell_liquidity_phase: "Early Contraction",
+  key_drivers: [
+    "Global liquidity peaked Q3/Q4 2025 at $188.8T - now contracting",
+    "$40T refinancing wall by 2027 absorbs available liquidity",
+    "BTC downside risk until trough (~2027-2028)",
+    "Equities should fall by end of 2026 per Howell framework",
+    "Buy gold and BTC on weakness only (20-25% below trend)"
+  ],
+  asset_recommendations: {
+    BTC: { bias: "bearish", sizing_multiplier: 0.15 },
+    ETH: { bias: "bearish", sizing_multiplier: 0.10 },
+    SOL: { bias: "bearish", sizing_multiplier: 0.10 }
+  }
+};
+
+const PORTFOLIO_DATA = {
+  paper_mode: true,
+  capital: 10000,
+  equity: 10000,
+  equity_peak: 10000,
+  daily_pnl_usd: 0,
+  daily_pnl_pct: 0.0,
+  total_pnl_usd: 0,
+  total_pnl_pct: 0.0,
+  positions: [],
+  exposure_pct: 0.0,
+};
+
+const SIGNALS_DATA = {
+  assets: {
+    BTC: {
+      composite_score: 0.8, direction: "neutral", confidence: 0.22,
+      indicator_breakdown: {
+        alpha_confluence: 13.76, macro_regime: -50.0, avi_momentum_value: 87.23,
+        cycle_phase: -20.0, system_leverage: 0.0, capitulation: 0.0,
+        institutional_accumulation: 34.0, costanza_reversal: 0.0,
+        theta_decay: 0.0, dcas_enhanced: 85.0
+      },
+      streams: { technical: 0.088, fundamental: -0.35, sentiment: 0.292 },
+      on_chain: {
+        composite_score: 29.2, direction: "BULLISH",
+        signal_scores: {
+          mvrv: -1.0, funding_rate: 0.0, exchange_flows: -0.3,
+          stablecoin: 0.0, sopr: -0.53, btc_dominance: -0.1,
+          halving_cycle: 0.2, fear_greed: 0.0
+        }
+      }
+    },
+    ETH: {
+      composite_score: -2.1, direction: "neutral", confidence: 0.18,
+      indicator_breakdown: {
+        alpha_confluence: -5.2, macro_regime: -50.0, avi_momentum_value: 62.1,
+        cycle_phase: -20.0, system_leverage: 0.0, capitulation: 0.0,
+        institutional_accumulation: 12.0, costanza_reversal: 0.0,
+        theta_decay: 0.0, dcas_enhanced: 70.0
+      },
+      streams: { technical: -0.03, fundamental: -0.35, sentiment: 0.18 },
+      on_chain: {
+        composite_score: 15.0, direction: "NEUTRAL",
+        signal_scores: { mvrv: -0.5, funding_rate: 0.0, exchange_flows: -0.2, stablecoin: 0.0, sopr: 0.0, btc_dominance: -0.1, halving_cycle: 0.2, fear_greed: 0.0 }
+      }
+    },
+    SOL: {
+      composite_score: -5.3, direction: "neutral", confidence: 0.15,
+      indicator_breakdown: {
+        alpha_confluence: -12.0, macro_regime: -50.0, avi_momentum_value: 45.0,
+        cycle_phase: -20.0, system_leverage: 0.0, capitulation: 0.0,
+        institutional_accumulation: 8.0, costanza_reversal: 0.0,
+        theta_decay: 0.0, dcas_enhanced: 55.0
+      },
+      streams: { technical: -0.08, fundamental: -0.35, sentiment: 0.12 },
+      on_chain: null
+    }
+  }
+};
+
+const COUNCIL_DATA = {
+  council_version: "1.0",
+  regime: "Risk-Off",
+  assets: {
+    BTC: { council_decision: "skip", reason: "Already rejected by Risk Manager (Agent 3)", original_rejection: "Neutral signal - no trade" },
+    ETH: { council_decision: "skip", reason: "Already rejected by Risk Manager (Agent 3)", original_rejection: "Neutral signal - no trade" },
+    SOL: { council_decision: "skip", reason: "Already rejected by Risk Manager (Agent 3)", original_rejection: "Neutral signal - no trade" }
+  }
+};
+
+const BACKTEST_DATA = {
+  metrics: {
+    total_trades: 175, win_rate: 25.7, avg_win: 4.66, avg_loss: -5.14,
+    profit_factor: 0.31, sharpe: -7.51, max_drawdown_pct: -5.04,
+    total_return_pct: -4.58, total_pnl_usd: -458.25, avg_holding_bars: 5.2,
+    total_fees: 92.62,
+    exit_reasons: { take_profit: 3, kill_switch: 146, stop_loss: 26 },
+    by_asset: {
+      BTC: { trades: 73, win_rate: 21.9, pnl: -236.28 },
+      ETH: { trades: 79, win_rate: 32.9, pnl: -78.83 },
+      SOL: { trades: 23, win_rate: 13.0, pnl: -143.17 }
+    }
+  }
+};
+
+const ADVISOR_PROFILES = [
+  { name: "Druckenmiller", initials: "SD", color: "#0B1D3A", philosophy: "Concentrate on best ideas. Asymmetric risk/reward. Macro top-down.", weight: "Anchor" },
+  { name: "Soros", initials: "GS", color: "#1D4ED8", philosophy: "Reflexivity. Markets create their own fundamentals. Test hypothesis, cut fast.", weight: "Anchor" },
+  { name: "Dalio", initials: "RD", color: "#7C3AED", philosophy: "All-weather balance. Risk parity. Don't have debt rise faster than income.", weight: "Standard" },
+  { name: "PTJ", initials: "PJ", color: "#059669", philosophy: "200-day MA is the line in the sand. Defence first. Protect capital.", weight: "Standard" },
+  { name: "Marks", initials: "HM", color: "#D97706", philosophy: "Credit cycle. Where are we in the cycle? Second-level thinking.", weight: "Standard" },
+  { name: "Howell", initials: "MH", color: "#DC2626", philosophy: "Global liquidity drives ALL asset prices. 65-month cycle.", weight: "HIGH" },
+  { name: "Felman", initials: "AF", color: "#0891B2", philosophy: "Flow-based. Funding rates, OI, liquidation cascades.", weight: "Crypto-native" },
 ];
 
-function renderMacro() {
-  document.getElementById('macro-grid').innerHTML = macroData.map(function(m) {
-    return '<div class="macro-item">' +
-      '<div class="label">' + m.label + '</div>' +
-      '<div class="value" style="color:' + m.color + '">' + m.value + '</div>' +
-      '<div class="detail">' + m.detail + '</div>' +
-      '<div class="trend" style="color:var(--white-d)">' + m.trend + '</div>' +
-    '</div>';
+const ANALYST_LEADERBOARD = [
+  { name: "Jim Bianco", calls: 19, channel: "Forward Guidance" },
+  { name: "Cem Karsan", calls: 12, channel: "Forward Guidance" },
+  { name: "Kevin Muir", calls: 7, channel: "Forward Guidance" },
+  { name: "Mel Mattison", calls: 7, channel: "Forward Guidance" },
+  { name: "Lyn Alden", calls: 6, channel: "Various" },
+  { name: "Raoul Pal", calls: 6, channel: "Real Vision" },
+  { name: "Darius Dale", calls: 5, channel: "42 Macro" },
+  { name: "Luke Gromen", calls: 4, channel: "Forward Guidance" },
+  { name: "Travis Kling", calls: 3, channel: "Forward Guidance" },
+  { name: "Michael Howell", calls: 2, channel: "CrossBorder Capital" },
+];
+
+const RECENT_CALLS = [
+  { analyst: "Jim Bianco", direction: "bearish", asset: "Equities", call: "Fed will not cut in 2026. Sticky inflation means higher-for-longer rates. Bearish equities.", date: "Mar 2026" },
+  { analyst: "Lyn Alden", direction: "bullish", asset: "BTC", call: "Bitcoin is a fiscal canary. US debt spiral makes BTC the rational savings technology. Long-term accumulation zone.", date: "Mar 2026" },
+  { analyst: "Darius Dale", direction: "bearish", asset: "Risk Assets", call: "GRID shows Q4 Deflation quadrant. Growth falling, inflation falling. Reduce risk exposure, wait for Q1 turn.", date: "Feb 2026" },
+  { analyst: "Raoul Pal", direction: "bullish", asset: "Crypto", call: "Exponential Age thesis intact. Crypto is network adoption curve. Buy the fear, this is a buying window.", date: "Feb 2026" },
+  { analyst: "Cem Karsan", direction: "bearish", asset: "SPX", call: "Dealer gamma positioning is short. Vol expansion likely. SPX correction to 4800-5000 range.", date: "Jan 2026" },
+];
+
+
+// ============================================================
+// RENDER FUNCTIONS
+// ============================================================
+
+function renderOverview() {
+  const regime = DATA.regime || REGIME_DATA;
+  const portfolio = DATA.portfolio || PORTFOLIO_DATA;
+
+  // Regime
+  const phaseEl = document.getElementById('regimePhase');
+  phaseEl.textContent = regime.regime;
+  phaseEl.className = 'regime-phase ' + regime.regime.toLowerCase().replace(/[- ]/g, '-');
+
+  const sub = regime.sub_regime || '--';
+  const grid = regime.darius_dale_grid_quadrant || '--';
+  const howell = regime.howell_liquidity_phase || '--';
+  const conf = ((regime.confidence || 0) * 100).toFixed(0);
+  document.getElementById('regimeSub').innerHTML =
+    `${sub} (Dale GRID: ${grid}) | Howell: <strong>${howell}</strong> | Confidence: ${conf}%`;
+
+  // Howell cycle marker position
+  const phasePositions = {
+    "Trough": 8, "Pre-Expansion": 25, "Early Expansion": 42,
+    "Late Expansion": 58, "Peak": 75, "Early Contraction": 88, "Late Contraction": 95
+  };
+  const markerPos = phasePositions[howell] || 88;
+  document.getElementById('cycleMarker').style.left = markerPos + '%';
+
+  // Key drivers
+  const driversEl = document.getElementById('keyDrivers');
+  const drivers = regime.key_drivers || [];
+  driversEl.innerHTML = drivers.map(d => {
+    const color = d.includes('contraction') || d.includes('fall') || d.includes('downside') ? 'var(--red)' :
+                  d.includes('gold') || d.includes('buy') ? 'var(--green)' : 'var(--orange)';
+    return `<div class="regime-driver"><div class="regime-driver-dot" style="background:${color}"></div>${d}</div>`;
+  }).join('');
+
+  // Portfolio KPIs
+  document.getElementById('kpiEquity').textContent = '$' + portfolio.equity.toLocaleString();
+  document.getElementById('kpiExposure').textContent = portfolio.exposure_pct.toFixed(0) + '%';
+  document.getElementById('kpiDailyPnl').textContent = (portfolio.daily_pnl_usd >= 0 ? '+' : '') + '$' + portfolio.daily_pnl_usd.toFixed(2);
+  document.getElementById('kpiTotalPnl').textContent = (portfolio.total_pnl_usd >= 0 ? '+' : '') + '$' + portfolio.total_pnl_usd.toFixed(2);
+
+  const pnlClass = portfolio.total_pnl_pct > 0 ? 'up' : portfolio.total_pnl_pct < 0 ? 'down' : 'neutral';
+  document.getElementById('kpiTotalChange').className = 'kpi-change ' + pnlClass;
+  document.getElementById('kpiTotalChange').textContent = (portfolio.total_pnl_pct >= 0 ? '+' : '') + portfolio.total_pnl_pct.toFixed(2) + '%';
+
+  // Positions
+  const posEl = document.getElementById('positionsContainer');
+  if (portfolio.positions && portfolio.positions.length > 0) {
+    posEl.innerHTML = portfolio.positions.map(p => `
+      <div class="position-card" style="margin-bottom:8px">
+        <div class="position-asset">${p.asset}</div>
+        <div class="position-details">
+          <div class="position-direction ${p.direction}">${p.direction}</div>
+          <div class="position-size">$${p.size_usd} at $${p.entry_price}</div>
+        </div>
+        <div class="position-pnl" style="color:${p.pnl >= 0 ? 'var(--green)' : 'var(--red)'}">
+          ${p.pnl >= 0 ? '+' : ''}$${(p.pnl || 0).toFixed(2)}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Asset recommendations
+  const recs = regime.asset_recommendations || {};
+  const recsEl = document.getElementById('assetRecs');
+  recsEl.innerHTML = Object.entries(recs).map(([asset, rec]) => {
+    const biasClass = rec.bias === 'bullish' ? 'conv-bullish' : rec.bias === 'bearish' ? 'conv-bearish' : 'conv-neutral';
+    const biasLabel = rec.bias.charAt(0).toUpperCase() + rec.bias.slice(1);
+    return `
+      <div class="card" style="text-align:center;padding:24px">
+        <div style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:8px">${asset}</div>
+        <span class="conviction-badge ${biasClass}">${biasLabel}</span>
+        <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">
+          Sizing: <span class="mono">${(rec.sizing_multiplier * 100).toFixed(0)}%</span> of max
+        </div>
+        <div style="margin-top:8px">
+          <div class="bar-track">
+            <div class="bar-fill" style="width:${rec.sizing_multiplier * 100}%;background:${rec.bias === 'bullish' ? 'var(--green)' : rec.bias === 'bearish' ? 'var(--red)' : 'var(--orange)'}"></div>
+          </div>
+        </div>
+      </div>
+    `;
   }).join('');
 }
-renderMacro();
-
-// ===== ANALYST LEADERBOARD =====
-var analysts = [
-  { name: 'Lyn Alden',      calls: 12, acc: 75, avgRet: '+8.4%',  best: 'BTC to $90K (Oct 2025)' },
-  { name: 'Avi Felman',     calls: 11, acc: 72, avgRet: '+11.2%', best: 'SOL breakout at $120 (Sep 2025)' },
-  { name: 'Darius Dale',    calls: 10, acc: 70, avgRet: '+6.8%',  best: 'Risk-on call Q4 2025' },
-  { name: 'Raoul Pal',      calls: 15, acc: 67, avgRet: '+9.1%',  best: 'ETH to $4K (Nov 2025)' },
-  { name: 'Michael Howell',  calls: 8, acc: 63, avgRet: '+5.3%',  best: 'Liquidity expansion call (Aug 2025)' },
-];
-
-function renderAnalysts() {
-  document.getElementById('analyst-tbody').innerHTML = analysts
-    .sort(function(a, b) { return b.acc - a.acc; })
-    .map(function(a, i) {
-      var accClass = a.acc >= 72 ? 'acc-high' : a.acc >= 67 ? 'acc-mid' : 'acc-low';
-      return '<tr>' +
-        '<td style="color:var(--white-dd)">' + (i + 1) + '</td>' +
-        '<td class="name">' + a.name + '</td>' +
-        '<td>' + a.calls + '</td>' +
-        '<td class="' + accClass + '">' + a.acc + '%</td>' +
-        '<td class="up">' + a.avgRet + '</td>' +
-        '<td style="color:var(--white-d);font-size:10px">' + a.best + '</td>' +
-      '</tr>';
-    }).join('');
-}
-renderAnalysts();
-
-// ===== SIGNAL DASHBOARD =====
-var signals = [
-  { asset: 'Crypto',      ticker: 'BTC',    signal: 'BULLISH',  score: 72, drivers: 'Liquidity + momentum aligned' },
-  { asset: 'Equities',    ticker: 'SPX',    signal: 'NEUTRAL',  score: 52, drivers: 'Late cycle, but earnings strong' },
-  { asset: 'Gold',        ticker: 'XAUUSD', signal: 'BULLISH',  score: 78, drivers: 'Dollar weakness + CB buying' },
-  { asset: 'Oil',         ticker: 'CL1',    signal: 'BEARISH',  score: 35, drivers: 'Demand slowing, OPEC+ oversupply' },
-  { asset: 'Bonds',       ticker: '10Y',    signal: 'NEUTRAL',  score: 48, drivers: 'Rate cuts priced, sticky inflation' },
-  { asset: 'FX',          ticker: 'DXY',    signal: 'BEARISH',  score: 32, drivers: 'Twin deficits, liquidity expansion' },
-];
 
 function renderSignals() {
-  document.getElementById('signal-grid').innerHTML = signals.map(function(s) {
-    var badge = s.signal.toLowerCase();
-    var barColor = badge === 'bullish' ? 'var(--green)' : badge === 'bearish' ? 'var(--red)' : 'var(--amber)';
-    return '<div class="signal-row">' +
-      '<div><div class="asset-name">' + s.asset + '</div><div class="asset-ticker">' + s.ticker + '</div></div>' +
-      '<div class="signal-badge ' + badge + '">' + s.signal + '</div>' +
-      '<div>' +
-        '<div class="signal-bar"><div class="fill" style="width:' + s.score + '%;background:' + barColor + '"></div></div>' +
-        '<div style="font-size:9px;color:var(--white-dd);margin-top:3px">' + s.drivers + '</div>' +
-      '</div>' +
-      '<div style="font-size:14px;font-weight:700;text-align:right;color:' + barColor + '">' + s.score + '</div>' +
-    '</div>';
+  const signals = (DATA.signals || SIGNALS_DATA).assets;
+
+  // Composite signals
+  const compEl = document.getElementById('compositeSignals');
+  compEl.innerHTML = Object.entries(signals).map(([asset, s]) => {
+    const score = s.composite_score;
+    const dir = s.direction;
+    const conf = (s.confidence * 100).toFixed(0);
+    const scoreColor = score > 20 ? 'var(--green)' : score < -20 ? 'var(--red)' : 'var(--text-secondary)';
+    return `
+      <div style="padding:14px 0;border-bottom:1px solid var(--border-light)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:16px;font-weight:700">${asset}</span>
+          <span class="mono" style="font-size:20px;color:${scoreColor}">${score > 0 ? '+' : ''}${score.toFixed(1)}</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;font-size:12px;color:var(--text-secondary)">
+          <span class="conviction-badge ${dir === 'long' ? 'conv-bullish' : dir === 'short' ? 'conv-bearish' : 'conv-neutral'}">${dir}</span>
+          <span>Confidence: ${conf}%</span>
+        </div>
+      </div>
+    `;
   }).join('');
-}
-renderSignals();
 
-// ===== NEWS FEED =====
-var newsItems = [
-  { time: '14:32', source: 'BLOOMBERG', headline: 'Fed Minutes Show Officials Split on Pace of Further Rate Cuts' },
-  { time: '14:18', source: 'REUTERS',   headline: 'Bitcoin Tops $84,000 as Institutional Inflows Hit Record Weekly High' },
-  { time: '13:55', source: 'CNBC',      headline: 'Gold Extends Rally to Fresh All-Time Highs Above $3,000' },
-  { time: '13:41', source: 'MARKETWATCH', headline: 'S&P 500 Eyes Third Straight Week of Gains on Earnings Optimism' },
-  { time: '12:28', source: 'BLOOMBERG', headline: 'ECB Signals Further Easing as Euro Area Inflation Falls to 2.1%' },
-  { time: '12:05', source: 'REUTERS',   headline: 'Oil Drops Below $69 as OPEC+ Output Cuts Face Compliance Issues' },
-  { time: '11:44', source: 'FT',        headline: 'Dollar Index Hits 3-Month Low as Rate Differential Narrows' },
-  { time: '11:22', source: 'CNBC',      headline: 'Nvidia Reports Record Data Center Revenue, AI Demand Surging' },
-  { time: '10:58', source: 'BLOOMBERG', headline: 'China M2 Growth Accelerates, Signaling Monetary Stimulus Taking Hold' },
-  { time: '10:30', source: 'MARKETWATCH', headline: 'Treasury Yield Curve Steepens Further as 2-Year Falls to 4.12%' },
-  { time: '09:45', source: 'REUTERS',   headline: 'Ethereum ETF Net Inflows Top $500M in March, Beating January Record' },
-  { time: '09:12', source: 'FT',        headline: 'Japan Intervention Fears Resurface as Yen Weakens Past 155' },
-];
-
-function renderNews() {
-  document.getElementById('news-list').innerHTML = newsItems.map(function(n) {
-    return '<div class="news-item">' +
-      '<span class="time">' + n.time + '</span>' +
-      '<span class="source">' + n.source + '</span>' +
-      '<span class="headline">' + n.headline + '</span>' +
-    '</div>';
+  // Stream breakdown
+  const streamEl = document.getElementById('streamBreakdown');
+  streamEl.innerHTML = Object.entries(signals).map(([asset, s]) => {
+    const streams = s.streams || {};
+    return `
+      <div style="padding:14px 0;border-bottom:1px solid var(--border-light)">
+        <div style="font-size:14px;font-weight:600;margin-bottom:10px">${asset}</div>
+        ${renderStreamBar('Technical (35%)', streams.technical || 0)}
+        ${renderStreamBar('Fundamental (40%)', streams.fundamental || 0)}
+        ${renderStreamBar('Sentiment (25%)', streams.sentiment || 0)}
+      </div>
+    `;
   }).join('');
+
+  // Individual indicators
+  ['BTC', 'ETH'].forEach(asset => {
+    const el = document.getElementById('indicators' + asset);
+    const s = signals[asset];
+    if (!s) return;
+    const breakdown = s.indicator_breakdown || {};
+    const barsHtml = Object.entries(breakdown).map(([name, val]) => {
+      const normalised = Math.min(100, Math.max(-100, val));
+      const pct = (normalised + 100) / 2; // Map -100..100 to 0..100
+      const color = val > 20 ? 'var(--green)' : val < -20 ? 'var(--red)' : 'var(--orange)';
+      const label = name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      return `
+        <div class="signal-bar">
+          <div class="signal-bar-header">
+            <span class="signal-name">${label}</span>
+            <span class="signal-score" style="color:${color}">${val > 0 ? '+' : ''}${val.toFixed(1)}</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-center"></div>
+            <div class="bar-fill" style="width:${pct}%;background:${color}"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    el.innerHTML = `<div class="card-title">${asset} Indicators</div><div class="card-subtitle">10 signals, normalised -100 to +100</div>` + barsHtml;
+  });
+
+  // On-chain
+  const btcOnChain = signals.BTC?.on_chain;
+  if (btcOnChain) {
+    const ocEl = document.getElementById('onChainSignals');
+    const scores = btcOnChain.signal_scores || {};
+    const ocHtml = Object.entries(scores).map(([name, val]) => {
+      const label = name.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      const color = val > 0 ? 'var(--green)' : val < 0 ? 'var(--red)' : 'var(--text-tertiary)';
+      return `
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light);font-size:13px">
+          <span>${label}</span>
+          <span class="mono" style="color:${color}">${val > 0 ? '+' : ''}${val.toFixed(2)}</span>
+        </div>
+      `;
+    }).join('');
+    ocEl.innerHTML = `
+      <div class="card-title">On-Chain Alpha (BTC)</div>
+      <div class="card-subtitle">Composite: <span class="mono" style="color:${btcOnChain.composite_score > 0 ? 'var(--green)' : 'var(--red)'}">${btcOnChain.composite_score.toFixed(1)}</span> | Direction: ${btcOnChain.direction}</div>
+      ${ocHtml}
+    `;
+  }
 }
-renderNews();
 
-// ===== TRANSCRIPT INSIGHTS =====
-var transcripts = [
-  { channel: 'Forward Guidance', date: 'Mar 17', takeaway: 'Felix argues the liquidity cycle is 6 months ahead of consensus. Expects BTC to lead risk assets higher through Q2. Key risk: CPI re-acceleration in May.' },
-  { channel: 'Monetary Matters', date: 'Mar 15', takeaway: 'Jack Farley interviews Michael Howell on CrossBorder Capital global liquidity index. Howell sees peak liquidity injection in Q3 2026, favoring hard assets and crypto.' },
-  { channel: 'Real Vision', date: 'Mar 14', takeaway: 'Raoul Pal breaks down the "everything code" thesis. Claims BTC/ETH cycle peak likely Q4 2026, not Q2. Shifting portfolio toward SOL and AI tokens.' },
-  { channel: '42 Macro', date: 'Mar 13', takeaway: 'Darius Dale GRID model flipped to "risk-on" in early March. Business cycle expansion phase confirmed. Dollar weakness is the dominant macro trade.' },
-  { channel: 'Lyn Alden', date: 'Mar 12', takeaway: 'Fiscal dominance thesis update: US deficit spending continues to inject liquidity regardless of Fed policy. Expects gold and BTC to benefit through 2026.' },
-  { channel: '1000xPod', date: 'Mar 10', takeaway: 'Avi Felman sees options market mispricing BTC upside. Implied vol at 55% while realized is 70%. Recommends long gamma positions ahead of halving anniversary.' },
-  { channel: 'Hugh Hendry', date: 'Mar 8', takeaway: 'Contrarian take: equity markets are priced for perfection. If inflation re-accelerates, the "no landing" scenario becomes "hard landing". Defensive positioning warranted.' },
-  { channel: 'All-In Podcast', date: 'Mar 7', takeaway: 'Panel debates AI infrastructure spending bubble. Sacks argues enterprise AI adoption is real but overhyped for 2026. Friedberg bullish on energy as AI bottleneck.' },
-];
+function renderStreamBar(label, value) {
+  const pct = ((value + 1) / 2 * 100).toFixed(0);
+  const color = value > 0.1 ? 'var(--green)' : value < -0.1 ? 'var(--red)' : 'var(--orange)';
+  return `
+    <div class="signal-bar">
+      <div class="signal-bar-header">
+        <span class="signal-name">${label}</span>
+        <span class="signal-score" style="color:${color}">${value > 0 ? '+' : ''}${value.toFixed(3)}</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-center"></div>
+        <div class="bar-fill" style="width:${pct}%;background:${color}"></div>
+      </div>
+    </div>
+  `;
+}
 
-function renderTranscripts() {
-  document.getElementById('transcript-list').innerHTML = transcripts.map(function(t) {
-    return '<div class="transcript-item">' +
-      '<div class="meta">' +
-        '<span class="channel">' + t.channel + '</span>' +
-        '<span class="date">' + t.date + '</span>' +
-      '</div>' +
-      '<div class="takeaway">' + t.takeaway + '</div>' +
-    '</div>';
+function renderCouncil() {
+  const council = DATA.council || COUNCIL_DATA;
+
+  // Council votes
+  const votesEl = document.getElementById('councilVotes');
+  votesEl.innerHTML = ADVISOR_PROFILES.map(a => {
+    const assetDecisions = council.assets || {};
+    const firstAsset = Object.values(assetDecisions)[0] || {};
+    const vote = firstAsset.council_decision || 'skip';
+    const voteClass = vote === 'approve' ? 'vote-approve' : vote === 'veto' ? 'vote-veto' : vote === 'adjust' ? 'vote-adjust' : 'vote-skip';
+    const voteLabel = vote.charAt(0).toUpperCase() + vote.slice(1);
+    return `
+      <div class="advisor-row">
+        <div class="advisor-avatar" style="background:${a.color}">${a.initials}</div>
+        <div class="advisor-info">
+          <div class="advisor-name">${a.name}</div>
+          <div class="advisor-philosophy">${a.philosophy}</div>
+        </div>
+        <span class="advisor-vote ${voteClass}">${voteLabel}</span>
+      </div>
+    `;
   }).join('');
-}
-renderTranscripts();
 
-// ===== REAL 7-DAY CHANGE (Binance Klines) =====
-function fetch7dChanges() {
-  var cryptoPairs = [
-    { symbol: 'BTCUSDT', id: 'btc' },
-    { symbol: 'ETHUSDT', id: 'eth' },
-    { symbol: 'SOLUSDT', id: 'sol' },
+  // Council decision
+  const decEl = document.getElementById('councilDecision');
+  const assets = council.assets || {};
+  decEl.innerHTML = `
+    <div class="card-title">Latest Decision: ${council.regime || '--'} Regime</div>
+    <div class="card-subtitle">Version ${council.council_version || '1.0'}</div>
+    ${Object.entries(assets).map(([asset, d]) => `
+      <div style="padding:12px 0;border-bottom:1px solid var(--border-light)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:15px;font-weight:700">${asset}</span>
+          <span class="advisor-vote ${d.council_decision === 'approve' ? 'vote-approve' : d.council_decision === 'veto' ? 'vote-veto' : 'vote-skip'}">${d.council_decision}</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:4px">${d.reason || d.original_rejection || '--'}</div>
+      </div>
+    `).join('')}
+  `;
+
+  // Advisor profiles
+  const profEl = document.getElementById('advisorProfiles');
+  profEl.innerHTML = ADVISOR_PROFILES.map(a => `
+    <div class="card" style="padding:20px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <div class="advisor-avatar" style="background:${a.color};width:44px;height:44px;font-size:15px">${a.initials}</div>
+        <div>
+          <div style="font-size:15px;font-weight:700">${a.name}</div>
+          <div style="font-size:11px;color:var(--text-tertiary)">${a.weight}</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.5">${a.philosophy}</div>
+    </div>
+  `).join('');
+}
+
+function renderBacktest() {
+  const bt = (DATA.backtest || BACKTEST_DATA).metrics;
+
+  // Metrics grid
+  const metricsEl = document.getElementById('backtestMetrics');
+  const metrics = [
+    { label: 'Total Trades', value: bt.total_trades, color: 'var(--text-primary)' },
+    { label: 'Win Rate', value: bt.win_rate.toFixed(1) + '%', color: bt.win_rate > 50 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Profit Factor', value: bt.profit_factor.toFixed(2), color: bt.profit_factor > 1 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Sharpe Ratio', value: bt.sharpe.toFixed(2), color: bt.sharpe > 0 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Max Drawdown', value: bt.max_drawdown_pct.toFixed(2) + '%', color: 'var(--red)' },
+    { label: 'Total Return', value: (bt.total_return_pct > 0 ? '+' : '') + bt.total_return_pct.toFixed(2) + '%', color: bt.total_return_pct > 0 ? 'var(--green)' : 'var(--red)' },
+    { label: 'Avg Win', value: '$' + bt.avg_win.toFixed(2), color: 'var(--green)' },
+    { label: 'Avg Loss', value: '$' + bt.avg_loss.toFixed(2), color: 'var(--red)' },
   ];
 
-  cryptoPairs.forEach(function(pair) {
-    fetch('https://api.binance.com/api/v3/klines?symbol=' + pair.symbol + '&interval=1d&limit=8')
-      .then(function(r) { return r.json(); })
-      .then(function(klines) {
-        if (klines.length >= 7) {
-          var priceNow = parseFloat(klines[klines.length - 1][4]); // close of latest candle
-          var price7d = parseFloat(klines[0][1]); // open of 7 days ago
-          var chg7d = ((priceNow - price7d) / price7d * 100);
-          var asset = assets.find(function(a) { return a.id === pair.id; });
-          if (asset) {
-            asset.chg7d = chg7d;
-            var el = document.getElementById('chg7d-' + pair.id);
-            if (el) { el.textContent = fmtChg(chg7d); el.className = chgClass(chg7d); }
-          }
-        }
-      })
-      .catch(function(e) { console.warn('7d klines fail ' + pair.id, e); });
+  metricsEl.innerHTML = metrics.map(m => `
+    <div class="metric-cell">
+      <div class="metric-value" style="color:${m.color}">${m.value}</div>
+      <div class="metric-label">${m.label}</div>
+    </div>
+  `).join('');
+
+  // By asset
+  const byAssetEl = document.getElementById('backtestByAsset');
+  const byAsset = bt.by_asset || {};
+  byAssetEl.innerHTML = Object.entries(byAsset).map(([asset, d]) => `
+    <div class="card" style="text-align:center;padding:24px">
+      <div style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:8px">${asset}</div>
+      <div class="mono" style="font-size:24px;color:${d.pnl >= 0 ? 'var(--green)' : 'var(--red)'};margin-bottom:4px">${d.pnl >= 0 ? '+' : ''}$${d.pnl.toFixed(2)}</div>
+      <div style="font-size:12px;color:var(--text-secondary)">${d.trades} trades | ${d.win_rate.toFixed(1)}% win rate</div>
+    </div>
+  `).join('');
+
+  // Backtest notes
+  document.getElementById('backtestNotes').innerHTML = `
+    <strong>Issues Found (Ralph Loop):</strong><br>
+    1. Kill switch was using <em>cumulative</em> P&L (-3%) instead of <em>daily</em> P&L -- caused 146/175 trades to exit via kill switch. <span style="color:var(--green)">FIXED</span><br>
+    2. Signal threshold too low (10) -- too many noise trades. Raised to 20. <span style="color:var(--green)">FIXED</span><br>
+    3. No trailing stops -- winners not protected. Added 1x ATR trailing stop. <span style="color:var(--green)">FIXED</span><br>
+    4. ATR stop/TP ratio inverted for R:R. Adjusted to 1.5x/3.0x (2:1). <span style="color:var(--green)">FIXED</span><br>
+    5. Min confidence raised from 0.20 to 0.30. <span style="color:var(--green)">FIXED</span><br><br>
+    <strong>Next steps:</strong> Re-run backtest with improved parameters to verify performance improvement.
+  `;
+
+  // Exit chart
+  const exitReasons = bt.exit_reasons || {};
+  renderExitChart(exitReasons);
+}
+
+function renderExitChart(exitReasons) {
+  const ctx = document.getElementById('exitChart');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(exitReasons).map(k => k.replace(/_/g, ' ')),
+      datasets: [{
+        data: Object.values(exitReasons),
+        backgroundColor: ['#059669', '#DC2626', '#D97706', '#2563EB', '#7C3AED'],
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 12 }, padding: 16 } }
+      }
+    }
   });
 }
 
-// Fetch real 7d data on load and every 10 minutes
-fetch7dChanges();
-setInterval(fetch7dChanges, 600000);
+function renderTranscripts() {
+  // Leaderboard
+  const lbEl = document.getElementById('analystLeaderboard');
+  const maxCalls = Math.max(...ANALYST_LEADERBOARD.map(a => a.calls));
+  lbEl.innerHTML = ANALYST_LEADERBOARD.map((a, i) => `
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-light)">
+      <span style="font-size:12px;font-weight:700;color:var(--text-tertiary);width:24px;text-align:right">${i+1}</span>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:600">${a.name}</div>
+        <div style="font-size:11px;color:var(--text-tertiary)">${a.channel}</div>
+      </div>
+      <div style="width:120px">
+        <div class="bar-track" style="height:6px">
+          <div class="bar-fill" style="width:${(a.calls/maxCalls*100)}%;background:var(--accent)"></div>
+        </div>
+      </div>
+      <span class="mono" style="font-size:13px;min-width:30px;text-align:right">${a.calls}</span>
+    </div>
+  `).join('');
 
+  // Recent calls
+  const callsEl = document.getElementById('recentCalls');
+  callsEl.innerHTML = RECENT_CALLS.map(c => `
+    <div class="transcript-item">
+      <div class="transcript-header">
+        <span class="transcript-analyst">${c.analyst}</span>
+        <span class="transcript-date">${c.date}</span>
+      </div>
+      <div class="transcript-call">
+        <span class="transcript-direction ${c.direction === 'bullish' ? 'dir-bullish' : 'dir-bearish'}">${c.direction}</span>
+        <span style="font-weight:600">${c.asset}:</span> ${c.call}
+      </div>
+    </div>
+  `).join('');
+}
+
+
+// ============================================================
+// LIVE PRICE FEEDS
+// ============================================================
+
+function connectBinanceWS() {
+  const streams = ['btcusdt@ticker', 'ethusdt@ticker', 'solusdt@ticker'];
+  const wsUrl = 'wss://stream.binance.com:9443/ws/' + streams.join('/');
+
+  try {
+    const ws = new WebSocket(wsUrl);
+    ws.onopen = () => {
+      document.getElementById('apiDot').className = 'api-dot live';
+      document.getElementById('apiStatus').textContent = 'LIVE';
+    };
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      const symbol = data.s;
+      const price = parseFloat(data.c);
+      const change = parseFloat(data.P);
+
+      if (symbol === 'BTCUSDT') {
+        document.getElementById('btcPrice').textContent = '$' + price.toLocaleString(undefined, {maximumFractionDigits: 0});
+        updateChange('btcChange', change);
+      } else if (symbol === 'ETHUSDT') {
+        document.getElementById('ethPrice').textContent = '$' + price.toLocaleString(undefined, {maximumFractionDigits: 0});
+        updateChange('ethChange', change);
+      } else if (symbol === 'SOLUSDT') {
+        document.getElementById('solPrice').textContent = '$' + price.toLocaleString(undefined, {maximumFractionDigits: 2});
+        updateChange('solChange', change);
+      }
+    };
+    ws.onerror = () => {
+      document.getElementById('apiDot').className = 'api-dot offline';
+      document.getElementById('apiStatus').textContent = 'OFFLINE';
+    };
+    ws.onclose = () => {
+      document.getElementById('apiDot').className = 'api-dot offline';
+      document.getElementById('apiStatus').textContent = 'RECONNECTING';
+      setTimeout(connectBinanceWS, 5000);
+    };
+  } catch(e) {
+    document.getElementById('apiDot').className = 'api-dot offline';
+    document.getElementById('apiStatus').textContent = 'OFFLINE';
+  }
+}
+
+function updateChange(elId, pct) {
+  const el = document.getElementById(elId);
+  el.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+  el.className = 'asset-item-change ' + (pct >= 0 ? 'up' : 'down');
+}
+
+
+// ============================================================
+// INIT
+// ============================================================
+
+async function init() {
+  await loadLocalData();
+  renderOverview();
+  renderSignals();
+  renderCouncil();
+  renderBacktest();
+  renderTranscripts();
+  connectBinanceWS();
+}
+
+init();
 </script>
 </body>
 </html>
